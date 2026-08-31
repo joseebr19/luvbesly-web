@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "title": "LUVME DRUMKIT",
+    "description": "Essential high-quality sounds.",
+    "price": "FREE",
+    "isFree": true,
+    "isLocked": false,
+    "detailUrl": "/kit-luvme.html",
+    "coverImage": "/images/luvme-cover.png",
+    "coverText": null,
+    "btnText": "DOWNLOAD",
+    "buyUrl": "https://www.beatstars.com/luvbesly/sound-kits/271767"
+  },
+  {
+    "id": 3,
+    "title": "SUMMER STASH KIT",
+    "description": "Premium high-quality sounds for modern trap & underground.",
+    "price": "$9.99",
+    "isFree": false,
+    "isLocked": false,
+    "detailUrl": "/kit-summer.html",
+    "coverImage": "/images/summer-stash-cover.png",
+    "coverText": null,
+    "btnText": "BUY KIT",
+    "buyUrl": "https://bsta.rs/fs9ISx"
+  },
+  {
+    "id": 2,
+    "title": "COMING SOON",
+    "description": "Currently in development.",
+    "price": "$19.99",
+    "isFree": false,
+    "isLocked": true,
+    "detailUrl": "#",
+    "coverImage": null,
+    "coverText": "NEXT KIT",
+    "btnText": "LOCKED",
+    "buyUrl": "#"
+  }
+]
