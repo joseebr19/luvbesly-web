@@ -1,0 +1,23 @@
+# Dependencias
+node_modules/
+
+# Secretos — NUNCA subir
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+
+# Cloudflare
+.wrangler/
+
+# Editor y sistema
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*

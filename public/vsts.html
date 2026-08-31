@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VST Vault | luvbesly</title>
+    <meta name="description" content="Explore a curated archive of free audio plugins, VST instruments and effects for underground producers. Weekly updates.">
+    <meta name="author" content="luvbesly">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#000000">
+    <link rel="canonical" href="https://luvbesly.com/vsts.html">
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:site_name" content="luvbesly">
+    <meta property="og:title" content="VST Vault | luvbesly">
+    <meta property="og:description" content="A curated archive of free audio plugins, VST instruments and effects. Weekly updates.">
+    <meta property="og:image" content="https://luvbesly.com/og-image.png">
+    <meta property="og:image:alt" content="luvbesly VST vault">
+    <meta property="og:url" content="https://luvbesly.com/vsts.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VST Vault | luvbesly">
+    <meta name="twitter:description" content="A curated archive of free audio plugins, VST instruments and effects. Weekly updates.">
+    <meta name="twitter:image" content="https://luvbesly.com/og-image.png">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Orbitron:wght@800;900&display=swap">
+
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header>
+        <a href="/" class="logo">LUVBESLY</a>
+
+        <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="main-nav" aria-label="Main">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/videos.html">Videos</a></li>
+                <li><a href="/beats.html">Beats</a></li>
+                <li><a href="/kits.html">Sound Kits</a></li>
+                <li><a href="/vsts.html" class="active" aria-current="page">VST Vault</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" class="kits-container">
+        <div class="kits-header">
+            <h2>VST ARCHIVE</h2>
+            <p>100% FREE [weekly plugin updates]</p>
+        </div>
+
+        <!-- El disclaimer vive en el HTML, no inyectado por JS: así se ve aunque el JS falle -->
+        <aside class="vst-disclaimer">
+            <h3>Disclaimer</h3>
+            <p>
+                This archive links to plugins hosted elsewhere. <strong>I do not own, host or distribute these files.</strong>
+                Every link goes to an external third-party site. Downloads are at your own risk — scan anything you install.
+            </p>
+        </aside>
+
+        <div class="search-container">
+            <label for="vst-search" class="visually-hidden">Search plugins</label>
+            <input type="search"
+                   id="vst-search"
+                   class="vst-search-input"
+                   placeholder="SEARCH PLUGIN..."
+                   autocomplete="off"
+                   spellcheck="false">
+        </div>
+
+        <p id="vst-count" class="vst-count" role="status" aria-live="polite"></p>
+
+        <!-- El JS rellena esta rejilla desde /data/vsts.json -->
+        <div class="kits-grid" id="vsts-grid" aria-busy="true">
+            <p class="loading-state">Loading archive…</p>
+        </div>
+
+        <noscript>
+            <p class="loading-state">Enable JavaScript to browse the plugin archive.</p>
+        </noscript>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="year">2026</span> LUVBESLY. All Rights Reserved.</p>
+    </footer>
+
+    <script type="module" src="/js/main.js"></script>
+
+</body>
+</html>
