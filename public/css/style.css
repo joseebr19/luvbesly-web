@@ -398,7 +398,7 @@ footer {
     margin-bottom: 50px;
 }
 
-.videos-header h2 {
+.videos-header h1 {
     font-family: var(--font-display);
     font-size: 2.2rem;
     letter-spacing: 3px;
@@ -480,7 +480,7 @@ footer {
     margin-bottom: 40px;
 }
 
-.beats-header h2 {
+.beats-header h1 {
     font-family: var(--font-display);
     font-size: 2.2rem;
     letter-spacing: 3px;
@@ -846,7 +846,7 @@ footer {
     margin-bottom: 50px;
 }
 
-.kits-header h2 {
+.kits-header h1 {
     font-family: var(--font-display);
     font-size: 2.2rem;
     letter-spacing: 3px;
@@ -1254,6 +1254,82 @@ footer {
     max-width: 70ch;
 }
 
+/* ==========================================
+   16. PÁGINAS LEGALES
+   ========================================== */
+.legal-page .kit-specs-section h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-pure);
+    margin: 22px 0 8px;
+}
+
+.legal-page .kit-specs-section h3:first-child {
+    margin-top: 0;
+}
+
+.legal-page .kit-specs-section ul {
+    max-width: 70ch;
+    margin: 10px 0 10px 20px;
+    color: var(--text-gray-medium);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.legal-page .kit-specs-section li {
+    margin-bottom: 6px;
+}
+
+.legal-page .kit-specs-section a {
+    color: var(--accent-vault);
+}
+
+.legal-page .kit-specs-section strong {
+    color: var(--text-pure);
+}
+
+.legal-page .updated-date {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-bottom: 30px;
+}
+
+/* Caja de aviso para los huecos que hay que rellenar antes de publicar.
+   No debe llegar a producción tal cual: es una nota de trabajo. */
+.legal-todo {
+    max-width: 900px;
+    margin: 0 auto 30px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-spec);
+    border-left: 3px solid #ff5555;
+    padding: 20px 24px;
+}
+
+.legal-todo h3 {
+    color: #ff5555;
+    font-family: var(--font-display);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+}
+
+.legal-todo p {
+    font-size: 0.85rem;
+    color: var(--text-gray-medium);
+    line-height: 1.6;
+}
+
+.legal-todo code {
+    background: var(--border-dark);
+    padding: 1px 5px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85em;
+    color: var(--text-pure);
+}
+
 /* El contenido del kit ahora es una lista de verdad, no un párrafo
    con bullets escritos a mano */
 .kit-content-details .kit-content-list {
@@ -1527,9 +1603,9 @@ footer {
         padding: 50px 20px;
     }
 
-    .videos-header h2,
-    .beats-header h2,
-    .kits-header h2 {
+    .videos-header h1,
+    .beats-header h1,
+    .kits-header h1 {
         font-size: 1.8rem;
     }
 }

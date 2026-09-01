@@ -5,7 +5,7 @@
     "description": "Complete collection of premium modular effects and host plugins.",
     "system": "WIN / MAC",
     "downloadUrl": "https://kilohearts.com/products/kilohearts_ultimate",
-    "image": "/images/vst-kilohearts.png"
+    "image": "/images/vst-kilohearts.webp"
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "description": "Legendary aggressive multiband upward/downward compressor plugin.",
     "system": "WIN / MAC",
     "downloadUrl": "https://splice.com/plugins/3788-ott-vst-au-by-xfer-records",
-    "image": "/images/vst-ott.png"
+    "image": "/images/vst-ott.webp"
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "description": "Ultimate free production suite loaded with synths, instruments, and effects.",
     "system": "WIN / MAC",
     "downloadUrl": "https://www.native-instruments.com/es/products/komplete/bundles/komplete-start/",
-    "image": "/images/vst-komplete.png"
+    "image": "/images/vst-komplete.webp"
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "description": "Advanced free plugin for cosmic reverbs and massive delays.",
     "system": "WIN / MAC",
     "downloadUrl": "https://valhalladsp.com/shop/reverb/valhalla-supermassive/",
-    "image": "/images/vst-supermassive.png"
+    "image": "/images/vst-supermassive.webp"
   },
   {
     "id": 5,
@@ -37,7 +37,7 @@
     "description": "Spectral warping wavetable synthesizer for advanced modern sound design.",
     "system": "WIN / MAC",
     "downloadUrl": "https://vital.audio/",
-    "image": "/images/vst-vital.png"
+    "image": "/images/vst-vital.webp"
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "description": "Incredibly powerful open-source hybrid synthesizer engine.",
     "system": "WIN / MAC / LINUX",
     "downloadUrl": "https://surge-synthesizer.github.io/",
-    "image": "/images/vst-surge.png"
+    "image": "/images/vst-surge.webp"
   },
   {
     "id": 7,
@@ -53,7 +53,7 @@
     "description": "Extremely clean and precise 16-band parametric equalizer plugin.",
     "system": "WIN / MAC / LINUX",
     "downloadUrl": "https://zl-audio.github.io/plugins/zlequalizer/",
-    "image": "/images/vst-zlequalizer.png"
+    "image": "/images/vst-zlequalizer.webp"
   },
   {
     "id": 8,
@@ -61,7 +61,7 @@
     "description": "Architectural mastering limiter with precise dynamics and brickwall protection.",
     "system": "WIN / MAC",
     "downloadUrl": "https://www.tokyodawn.net/vladg-limiter-n6/",
-    "image": "/images/vst-limitern6.png"
+    "image": "/images/vst-limitern6.webp"
   },
   {
     "id": 9,
@@ -69,7 +69,7 @@
     "description": "Classic tape dynamics simulator designed to add warm analog saturation.",
     "system": "WIN",
     "downloadUrl": "https://varietyofsound.wordpress.com/2021/09/06/ferrictds-mkii-released/",
-    "image": "/images/vst-ferrictds.png"
+    "image": "/images/vst-ferrictds.webp"
   },
   {
     "id": 10,
@@ -77,7 +77,7 @@
     "description": "Parallel dynamic equalizer combining precise parametric control with compression.",
     "system": "WIN / MAC",
     "downloadUrl": "https://www.tokyodawn.net/tdr-nova/",
-    "image": "/images/vst-tdrnova.png"
+    "image": "/images/vst-tdrnova.webp"
   },
   {
     "id": 11,
@@ -85,7 +85,7 @@
     "description": "Lightweight and flexible sample playback engine for custom underground libraries.",
     "system": "WIN / MAC / LINUX",
     "downloadUrl": "https://www.decentsamples.com/product/decent-sampler-plugin/",
-    "image": "/images/vst-decentsampler.png"
+    "image": "/images/vst-decentsampler.webp"
   },
   {
     "id": 12,
@@ -93,7 +93,7 @@
     "description": "Collection of chaotic, anarchic audio effects for extreme glitch and anti-traditional sound design.",
     "system": "WIN / MAC",
     "downloadUrl": "https://freakshowindustries.com/",
-    "image": "/images/vst-freakshow.png"
+    "image": "/images/vst-freakshow.webp"
   },
   {
     "id": 13,
@@ -101,7 +101,7 @@
     "description": "Ultra-rare underground experimental effects pack for harsh digital destruction.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/Ryg31LZD#3IetDbH4UEYhuR6YSIAZSFIJMeaSFBPnm5fRDqo76tc",
-    "image": "/images/vst-jackdark.png"
+    "image": "/images/vst-jackdark.webp"
   },
   {
     "id": 14,
@@ -109,7 +109,7 @@
     "description": "Vintage singing synthesizer designed to emulate early vocal technology.",
     "system": "WIN / MAC",
     "downloadUrl": "https://www.plogue.com/products/alter-ego.html",
-    "image": "/images/vst-alterego.png"
+    "image": "/images/vst-alterego.webp"
   },
   {
     "id": 15,
@@ -117,7 +117,7 @@
     "description": "Curated collection of lo-fi crunch, bitcrushers, and industrial utility tools.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/RuJyBI6a#KNu65W_8L-6msC3RllwaJWOUXf0DvLOGmSUBN6iNHy4",
-    "image": "/images/vst-cybergrunge.png"
+    "image": "/images/vst-cybergrunge.webp"
   },
   {
     "id": 16,
@@ -125,7 +125,7 @@
     "description": "Full suite of legendary reverbs, chorus, and industrial distortion units.",
     "system": "WIN / MAC",
     "downloadUrl": "https://www.audiodamage.com/pages/free-and-legacy",
-    "image": "/images/vst-audiodamage.png"
+    "image": "/images/vst-audiodamage.webp"
   },
   {
     "id": 17,
@@ -133,7 +133,7 @@
     "description": "Dark ambient synth bundle specialized in eerie soundtracks and industrial drones.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/ki4miRja#gd5Gjh7ub1cQJ7PJU9K03qt1jD0mQesHN0cmMOlvmL0",
-    "image": "/images/vst-necromare.png"
+    "image": "/images/vst-necromare.webp"
   },
   {
     "id": 18,
@@ -141,7 +141,7 @@
     "description": "8-bit chiptune synthesis emulator for raw, unpolished retro sound design.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/R7pERYgB#cQDMGe0UnqM1bsRIVuN40rqD-JtDrRIqN001DE4Q67M",
-    "image": "/images/vst-cheapotone.png"
+    "image": "/images/vst-cheapotone.webp"
   },
   {
     "id": 19,
@@ -149,7 +149,7 @@
     "description": "Aggressive emulated clone of the classic 303 acid bassline synthesizer.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/p6RBXS4B#ec4nYzV2_iF6yfF-7x4GM1mdOPuqPO4VNPeiogiJICo",
-    "image": "/images/vst-venom303.png"
+    "image": "/images/vst-venom303.webp"
   },
   {
     "id": 20,
@@ -157,7 +157,7 @@
     "description": "Physical modeling acoustic synth dedicated to pure organic woodwind tones.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/F64BEYoC#kdltK5A9EMN660k3kBi6GtnXDYQeMalsZ_uKLRvNnDU",
-    "image": "/images/vst-samsara.png"
+    "image": "/images/vst-samsara.webp"
   },
   {
     "id": 21,
@@ -165,7 +165,7 @@
     "description": "Essential collection of standard vintage audio tools, delays, and phasers.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/M3Ik0CxT#-2GsGSYfIAq5Gpe_lo5IbEi72koL7Azd--KfMQu_sPA",
-    "image": "/images/vst-classiceffects.png"
+    "image": "/images/vst-classiceffects.webp"
   },
   {
     "id": 22,
@@ -173,7 +173,7 @@
     "description": "Premium tape delay effect featuring warm analog saturation and filters.",
     "system": "WIN / MAC",
     "downloadUrl": "https://tal-software.com/products/tal-dub",
-    "image": "/images/vst-taldub.png"
+    "image": "/images/vst-taldub.webp"
   },
   {
     "id": 23,
@@ -181,7 +181,7 @@
     "description": "Sega Genesis YM2612 FM chip emulation for true vintage 16-bit sound.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/ImR32BoS#xxZ4ukKmNZWca2Le3eqpHIDjJmLNdHcCdMv0PVN3XXw",
-    "image": "/images/vst-genny.png"
+    "image": "/images/vst-genny.webp"
   },
   {
     "id": 24,
@@ -189,7 +189,7 @@
     "description": "Unique experimental sound generator built for unpredictable texture design.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/wvAmTbYb#5RpkNkUJqE5GPFBD95u7eDDhSroQwGiAW8BJYO0_rD8",
-    "image": "/images/vst-jellyfis.png"
+    "image": "/images/vst-jellyfis.webp"
   },
   {
     "id": 25,
@@ -197,7 +197,7 @@
     "description": "Cybernetic synthesizer focused on heavy sci-fi FX and abrasive basslines.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/h3wnSDiZ#GdjqS9ajbpdxBqOp_deBNCurP76ZkEfnBDXxKMC7tSg",
-    "image": "/images/vst-quantum.png"
+    "image": "/images/vst-quantum.webp"
   },
   {
     "id": 26,
@@ -205,7 +205,7 @@
     "description": "Ethereal space echo delay engine designed for expansive cinematic audio pads.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/Y3xCHJjK#dqhiXppdM7xWpY2eUXTShAYReOM5P9Ilns2a3GkTIYc",
-    "image": "/images/vst-moonecho.png"
+    "image": "/images/vst-moonecho.webp"
   },
   {
     "id": 27,
@@ -213,7 +213,7 @@
     "description": "The legendary singing monk synthesizer with real-time vocal pitch-tracking.",
     "system": "WIN / MAC",
     "downloadUrl": "https://mega.nz/file/k6g1GSJT#bmaaczd4ubRClSevJW28VXtiW0aiT6AierOqy8PlSIc",
-    "image": "/images/vst-delaylama.png"
+    "image": "/images/vst-delaylama.webp"
   },
   {
     "id": 28,
@@ -221,7 +221,7 @@
     "description": "Industrial visual metronome and timing tool for precise performance syncing.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/9rgEkDAS#eW7wmPTnyWEbobRu3YzGdGntQ901UZ8HSdnULLjJ_Js",
-    "image": "/images/vst-metrognome.png"
+    "image": "/images/vst-metrognome.webp"
   },
   {
     "id": 29,
@@ -229,7 +229,7 @@
     "description": "Four experimental oscillator VSTs designed for intense waveform morphing.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/06BySbrB#a2eBAa-s0JhHSi6Ibj3WLN09RZ3GqPyDYU0o05Qn_cs",
-    "image": "/images/vst-anosci.png"
+    "image": "/images/vst-anosci.webp"
   },
   {
     "id": 30,
@@ -237,7 +237,7 @@
     "description": "Advanced visual granular synthesizer that turns color spectrums into sound.",
     "system": "WIN / MAC / LINUX",
     "downloadUrl": "https://bboettcher3.github.io/grainbow",
-    "image": "/images/vst-grainbow.png"
+    "image": "/images/vst-grainbow.webp"
   },
   {
     "id": 31,
@@ -253,7 +253,7 @@
     "description": "Cult-classic feline synthesizer engine based on a dynamic internal sampler.",
     "system": "WIN / MAC",
     "downloadUrl": "https://mega.nz/file/0qAU1bgD#FMDl-smRlt_yYw7pRDuCyBa2yTDYbHuSymM939n8uvI",
-    "image": "/images/vst-meowsynth.png"
+    "image": "/images/vst-meowsynth.webp"
   },
   {
     "id": 33,
@@ -261,7 +261,7 @@
     "description": "Frequency shifter specialized in eerie pitch mutations and cosmic modulation.",
     "system": "WIN / MAC",
     "downloadUrl": "https://ohmforce.com/products/hematohm",
-    "image": "/images/vst-hematohm.png"
+    "image": "/images/vst-hematohm.webp"
   },
   {
     "id": 34,
@@ -269,7 +269,7 @@
     "description": "Multiband distortion engine capable of transforming tracks into raw concrete.",
     "system": "WIN / MAC",
     "downloadUrl": "https://ohmforce.com/products/predatohm",
-    "image": "/images/vst-predatohm.png"
+    "image": "/images/vst-predatohm.webp"
   },
   {
     "id": 35,
@@ -277,7 +277,7 @@
     "description": "Unmatched modular filter bank plugin built for surgical sound sculpting.",
     "system": "WIN / MAC",
     "downloadUrl": "https://ohmforce.com/products/quad-frohmage",
-    "image": "/images/vst-quadfrohmage.png"
+    "image": "/images/vst-quadfrohmage.webp"
   },
   {
     "id": 36,
@@ -285,7 +285,7 @@
     "description": "Hybrid granular/wavetable synth tailored for industrial textures.",
     "system": "WIN / MAC",
     "downloadUrl": "https://ohmforce.com/products/symptohm",
-    "image": "/images/vst-symptohm.png"
+    "image": "/images/vst-symptohm.webp"
   },
   {
     "id": 37,
@@ -293,7 +293,7 @@
     "description": "Complex multi-phaser unit that builds rotating rhythmic soundscapes.",
     "system": "WIN / MAC",
     "downloadUrl": "https://ohmforce.com/products/mobilohm",
-    "image": "/images/vst-mobilohm.png"
+    "image": "/images/vst-mobilohm.webp"
   },
   {
     "id": 38,
@@ -301,7 +301,7 @@
     "description": "Chaotic comb-filter and oscillator hybrid module for unpredictable track madness.",
     "system": "WIN / MAC",
     "downloadUrl": "https://ohmforce.com/products/ohmygod",
-    "image": "/images/vst-ohmygod.png"
+    "image": "/images/vst-ohmygod.webp"
   },
   {
     "id": 40,
@@ -309,7 +309,7 @@
     "description": "Lo-fi anti-aliasing filter designed to trash pristine digital audio signals.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/524zBIqZ#NLvYUswQE3ncDGqsWXhmtYS-bCg6q8RYOjKUdUKLaaM",
-    "image": "/images/vst-superubbish.png"
+    "image": "/images/vst-superubbish.webp"
   },
   {
     "id": 41,
@@ -317,7 +317,7 @@
     "description": "Dark, generative horror drone maker and granular noise synthesizer.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/Bnh0iQhK#3ND7AODClcejut2YVYlYBr7O_qStwAZerMVasaLyb00",
-    "image": "/images/vst-gargoyle.png"
+    "image": "/images/vst-gargoyle.webp"
   },
   {
     "id": 42,
@@ -325,7 +325,7 @@
     "description": "Monophonic digital synthesizer focused on raw, aggressive synthwave leads.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/hiYCBIgL#X4gyGgRv7EZMA9XIE2swisPfXnvfzr0XMisPfXnvfzr0XMj2RWN0cdIs",
-    "image": "/images/vst-lizard.png"
+    "image": "/images/vst-lizard.webp"
   },
   {
     "id": 43,
@@ -333,7 +333,7 @@
     "description": "Evolution of the gargoyle engine with wider soundscapes and integrated modulation.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/pq5FzCjJ#J9MRAkO-g4uzBtPi_CF9YmVhv_o_TQU5Ws9Pra85bwc",
-    "image": "/images/vst-gargoyle2.png"
+    "image": "/images/vst-gargoyle2.webp"
   },
   {
     "id": 44,
@@ -341,7 +341,7 @@
     "description": "Unique and stylish collection of modular dynamics and analog wave manglers.",
     "system": "WIN / MAC / LINUX",
     "downloadUrl": "https://vst.unplug.red/",
-    "image": "/images/vst-unplugred.png"
+    "image": "/images/vst-unplugred.webp"
   },
   {
     "id": 45,
@@ -349,7 +349,7 @@
     "description": "Classic legacy glitch effects specializing in extreme digital buffer destruction.",
     "system": "WIN / MAC",
     "downloadUrl": "https://destroyfx.org/",
-    "image": "/images/vst-destroyfx.png"
+    "image": "/images/vst-destroyfx.webp"
   },
   {
     "id": 46,
@@ -357,7 +357,7 @@
     "description": "Experimental underground vocal processor and robotic synthesizer engine.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/crIgAK4R#xNdqD3Cc5vKXspYFwX_XAUQIGpzfEco5sxLLcNiIO8c",
-    "image": "/images/vst-tervoxsyn.png"
+    "image": "/images/vst-tervoxsyn.webp"
   },
   {
     "id": 47,
@@ -365,7 +365,7 @@
     "description": "Vintage rare drum machine emulation with crunchy lo-fi output controls.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/l6YzFS7D#wdzd7QS3vDYTgx6vdFWuZpboe7LQe2_ZlwJftj-XaI4",
-    "image": "/images/vst-rhythmus.png"
+    "image": "/images/vst-rhythmus.webp"
   },
   {
     "id": 48,
@@ -373,7 +373,7 @@
     "description": "Percussive custom tool specialized in harsh electronic transient synthesis.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/4zxBlLpZ#Kt9nVgHtiXH1eEqj9Njzf50y5U71Se3kqPdKPBR9Oz4",
-    "image": "/images/vst-zapkit.png"
+    "image": "/images/vst-zapkit.webp"
   },
   {
     "id": 49,
@@ -381,7 +381,7 @@
     "description": "Generative randomized modulation filter designed to spark unpredictable track design.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/NqBXlY7K#uhOC0Lm9KOOCfUUfuB2TstRN3PJDgTSscEE7ArIAMKo",
-    "image": "/images/vst-surprise.png"
+    "image": "/images/vst-surprise.webp"
   },
   {
     "id": 50,
@@ -389,7 +389,7 @@
     "description": "Advanced vintage digital vocoder architecture with multi-band routing parameters.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/hyRAWIrT#GAp50FudhuwheApgts2lgDfPr9puOuu3bgWblf2v-TA",
-    "image": "/images/vst-vocov.png"
+    "image": "/images/vst-vocov.webp"
   },
   {
     "id": 51,
@@ -397,7 +397,7 @@
     "description": "Physical modeling plugin focusing on extreme resonance and physical spring models.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/1v5VGAYD#sejUP1rwpVsxjul0SW8aiXSG3rT9wCTwtO7nYXgmVUw",
-    "image": "/images/vst-lordsprings.png"
+    "image": "/images/vst-lordsprings.webp"
   },
   {
     "id": 52,
@@ -405,7 +405,7 @@
     "description": "Atmospheric noise builder simulating raw shortwave radio scan bands.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/lnRDQA5Z#xmnn254UU5qBHgXBvOhFbpUoN041XE-09soOXissdLE",
-    "image": "/images/vst-ghostradio.png"
+    "image": "/images/vst-ghostradio.webp"
   },
   {
     "id": 53,
@@ -413,7 +413,7 @@
     "description": "Specialized speech synth modulator designed to recreate classic Sci-Fi robot tones.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/FiRyFBYS#n1n66JxwYkdraryPFD0dKzh7StTf9Xr3BCfwAHca6tw",
-    "image": "/images/vst-dalek.png"
+    "image": "/images/vst-dalek.webp"
   },
   {
     "id": 54,
@@ -421,7 +421,7 @@
     "description": "Haunting classic theremin simulator loaded with microtonal modulation options.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/hqRWABiB#i2Q-9h-tAQoWmH5RoZ_dZZ_HhY8ZEuKh4-7pLvGEl2E",
-    "image": "/images/vst-terrormin.png"
+    "image": "/images/vst-terrormin.webp"
   },
   {
     "id": 55,
@@ -429,7 +429,7 @@
     "description": "Unique creative glitch distortion and creative audio corruption unit.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/t2ARnYqB#f1k7Lon1FiSVWMozBPHUJxdDu-_xPXuidd1FJcyw0jc",
-    "image": "/images/vst-bertill.png"
+    "image": "/images/vst-bertill.webp"
   },
   {
     "id": 56,
@@ -437,7 +437,7 @@
     "description": "Experimental vocal synthesizer engine built for robotic and artificial sound design.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/R2Q2nLxa#obt8AmoK7SRrY8kzAkFF9fZHiV8goab003tbZyyvYKE",
-    "image": "/images/vst-syng2.png"
+    "image": "/images/vst-syng2.webp"
   },
   {
     "id": 57,
@@ -445,7 +445,7 @@
     "description": "Vintage lo-fi vocal emulator tailored for underground and classic textures.",
     "system": "WIN",
     "downloadUrl": "https://mega.nz/file/hzJwEAzQ#MNyfbtMZsNltk-f1NbfnDES81fWsgA7SVF1xK_V-rc4",
-    "image": "/images/vst-skcrooner.png"
+    "image": "/images/vst-skcrooner.webp"
   },
   {
     "id": 58,
@@ -453,7 +453,7 @@
     "description": "Dark, eerie harpsichord instrument plugin designed for cinematic and retro scores.",
     "system": "WIN / MAC",
     "downloadUrl": "https://mega.nz/file/VyBHDJbA#Op4QtVW40S9Ey3Xbi_Z2VDqCe13T7xAF3sdBvil1nJo",
-    "image": "/images/vst-darksichord.png"
+    "image": "/images/vst-darksichord.webp"
   },
   {
     "id": 59,
@@ -461,7 +461,7 @@
     "description": "Scary sound generator specialized in cinematic horror atmospheres and dark drones.",
     "system": "WIN / MAC",
     "downloadUrl": "https://mega.nz/file/tqYDSZaS#AQv5KbDWMrMgzv-AZEqm0wPsKXWM_v9r96FaoC4vqcI",
-    "image": "/images/vst-horrorbox.png"
+    "image": "/images/vst-horrorbox.webp"
   },
   {
     "id": 60,
@@ -477,7 +477,7 @@
     "description": "Legendary and incredibly lightweight subtractive synthesizer modeled on the Clavia Nord Lead 2.",
     "system": "WIN / MAC",
     "downloadUrl": "https://daichilab.sakura.ne.jp/softsynth/index.html",
-    "image": "/images/vst-synth1.png"
+    "image": "/images/vst-synth1.webp"
   },
   {
     "id": 62,
@@ -485,7 +485,7 @@
     "description": "Powerful analog-modeled synthesizer engine built with classic architecture and supreme modulation.",
     "system": "WIN / MAC",
     "downloadUrl": "https://u-he.com/products/tyrelln6/",
-    "image": "/images/vst-tyrelln6.png"
+    "image": "/images/vst-tyrelln6.webp"
   },
   {
     "id": 63,
@@ -493,7 +493,7 @@
     "description": "Semi-modular synthesizer with subtractive and FM synthesis plus granular sampling.",
     "system": "WIN / MAC",
     "downloadUrl": "https://www.greenoak.com/crystal/dnld2.html",
-    "image": "/images/vst-crystal.png"
+    "image": "/images/vst-crystal.webp"
   },
   {
     "id": 64,
@@ -501,7 +501,7 @@
     "description": "Stunning emulation of Ensoniq's classic SQ-80, reproducing vintage lo-fi 8-bit crosswave synthesis.",
     "system": "WIN",
     "downloadUrl": "http://www.buchty.net/ensoniq/index.html#sq8l",
-    "image": "/images/vst-sq8l.png"
+    "image": "/images/vst-sq8l.webp"
   },
   {
     "id": 65,
@@ -509,7 +509,7 @@
     "description": "Frequency shifter combined with an analog-modeled delay for psychedelic echo and cosmic modulations.",
     "system": "WIN / MAC",
     "downloadUrl": "https://valhalladsp.com/shop/delay/valhalla-freq-echo/",
-    "image": "/images/vst-freqecho.png"
+    "image": "/images/vst-freqecho.webp"
   },
   {
     "id": 66,
@@ -517,6 +517,6 @@
     "description": "Professional real-time FFT spectrum analyzer for clean surgical mixing and mastering.",
     "system": "WIN / MAC",
     "downloadUrl": "https://www.voxengo.com/product/span/",
-    "image": "/images/vst-span.png"
+    "image": "/images/vst-span.webp"
   }
 ]
