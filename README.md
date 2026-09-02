@@ -1,8 +1,8 @@
 # luvbesly.com
 
-Web oficial y plataforma de venta de beats de **luvbesly**. Sitio estático sin
-framework ni paso de compilación, con una función de servidor para el feed de
-YouTube. Desplegado en Cloudflare Pages.
+Official website and beat-selling platform for **luvbesly**. A static site with
+no framework and no build step, plus a single server function for the YouTube
+feed. Deployed on Cloudflare Pages.
 
 🔗 [luvbesly.com](https://luvbesly.com)
 
@@ -10,48 +10,48 @@ YouTube. Desplegado en Cloudflare Pages.
 
 ## Stack
 
-HTML, CSS y JavaScript con módulos ES nativos. Sin dependencias en tiempo de
-ejecución y sin bundler: lo que hay en `public/` es exactamente lo que se sirve.
-Wrangler solo se usa para el entorno local y el despliegue.
+HTML, CSS, and JavaScript with native ES modules. No runtime dependencies and
+no bundler: what's in `public/` is exactly what gets served. Wrangler is only
+used for local dev and deployment.
 
 ---
 
-## Estructura
+## Structure
 
 ```
 .
-├── public/                 Raíz pública. Todo lo de aquí se sirve tal cual
-│   ├── *.html              Páginas
-│   ├── _headers            Cabeceras de seguridad y caché
+├── public/                 Public root. Everything here is served as-is
+│   ├── *.html              Pages
+│   ├── _headers            Security and cache headers
 │   ├── robots.txt
 │   ├── sitemap.xml
 │   ├── css/style.css
 │   ├── js/
-│   │   ├── main.js         Router: menú y carga perezosa de módulos
-│   │   ├── dom.js          Helpers de creación de DOM y fetch
-│   │   ├── player.js       Reproductor global de audio
-│   │   ├── beats.js        Página de beats
-│   │   ├── kits.js         Página de sound kits
-│   │   ├── vsts.js         VST Vault con buscador
-│   │   └── videos.js       Feed de YouTube (cliente)
-│   ├── data/               Contenido editable sin tocar código
+│   │   ├── main.js         Router: nav and lazy module loading
+│   │   ├── dom.js          DOM-creation and fetch helpers
+│   │   ├── player.js       Global audio player
+│   │   ├── beats.js        Beats page
+│   │   ├── kits.js         Sound kits page
+│   │   ├── vsts.js         VST Vault with search
+│   │   └── videos.js       YouTube feed (client)
+│   ├── data/               Editable content, no code changes needed
 │   │   ├── beats.json
 │   │   ├── kits.json
 │   │   └── vsts.json
 │   ├── images/
 │   └── audio/
 ├── functions/
-│   └── api/videos.js       Proxy cacheado a la API de YouTube
-├── check.sh                Verificación de estructura e integridad
+│   └── api/videos.js       Cached proxy to the YouTube API
+├── check.sh                Structure and integrity check
 ├── wrangler.jsonc
-└── .dev.vars               Secretos locales — ignorado por git
+└── .dev.vars               Local secrets — git-ignored
 ```
 
 ---
 
-## Desarrollo
+## Development
 
-Requiere Node.js 20 o superior.
+Requires Node.js 20 or newer.
 
 ```bash
 git clone https://github.com/joseebr19/luvbesly-web.git
@@ -59,45 +59,46 @@ cd luvbesly-web
 npx wrangler pages dev
 ```
 
-Levanta en `http://localhost:8788`. No abras los HTML con doble clic: usan rutas
-absolutas y `fetch`, así que necesitan servirse desde un servidor.
+Runs on `http://localhost:8788`. Don't open the HTML files by double-clicking
+them: they use absolute paths and `fetch`, so they need to be served from a
+server.
 
-Antes de desplegar conviene pasar la verificación:
+Before deploying, run the check:
 
 ```bash
 bash check.sh
 ```
 
-Comprueba que la estructura está completa, que las rutas de los JSON apuntan a
-archivos que existen y que no hay claves sueltas en `public/`.
+It verifies the structure is complete, that JSON references point to files
+that actually exist, and that there are no stray keys in `public/`.
 
 ---
 
-## Variables de entorno
+## Environment variables
 
-| Variable | Descripción |
+| Variable | Description |
 |---|---|
-| `YOUTUBE_KEY` | Clave de YouTube Data API v3, restringida a esa única API |
-| `YOUTUBE_CHANNEL_ID` | ID del canal, empieza por `UC` |
+| `YOUTUBE_KEY` | YouTube Data API v3 key, restricted to that single API |
+| `YOUTUBE_CHANNEL_ID` | Channel ID, starts with `UC` |
 
-**En local:** archivo `.dev.vars` en la raíz.
+**Locally:** `.dev.vars` file at the project root.
 
 ```
 YOUTUBE_KEY=...
 YOUTUBE_CHANNEL_ID=UC...
 ```
 
-**En producción:** panel de Cloudflare Pages → Settings → Variables and Secrets,
-entorno Production. `YOUTUBE_KEY` debe marcarse como **Secret**.
+**In production:** Cloudflare Pages dashboard → Settings → Variables and
+Secrets, Production environment. `YOUTUBE_KEY` must be marked as **Secret**.
 
-Las variables se inyectan al desplegar, así que después de añadirlas o
-cambiarlas hay que relanzar el despliegue.
+Variables are injected at deploy time, so after adding or changing one you
+need to redeploy.
 
 ---
 
-## Despliegue
+## Deployment
 
-Cada push a `main` despliega automáticamente. Manualmente:
+Every push to `main` deploys automatically. Manually:
 
 ```bash
 npx wrangler pages deploy
@@ -105,60 +106,60 @@ npx wrangler pages deploy
 
 ---
 
-## Editar contenido
+## Editing content
 
-El contenido vive en `public/data/`, no en el código. Para publicar un beat
-nuevo, añade una entrada a `beats.json` y sube el MP3 a `public/audio/`:
+Content lives in `public/data/`, not in the code. To publish a new beat, add
+an entry to `beats.json` and upload the MP3 to `public/audio/`:
 
 ```json
 {
   "id": 7,
-  "title": "NOMBRE",
+  "title": "NAME",
   "bpm": "150 BPM",
   "key": "C MAJOR",
-  "audioUrl": "/audio/Nombre.mp3",
+  "audioUrl": "/audio/Name.mp3",
   "buyUrl": "https://www.beatstars.com/luvbesly"
 }
 ```
 
-Mismo procedimiento para `kits.json` y `vsts.json`.
+Same process for `kits.json` and `vsts.json`.
 
-> **Importante:** Cloudflare distingue mayúsculas y minúsculas en los nombres de
-> archivo; Windows no. Un `Beat.mp3` referenciado como `beat.mp3` funciona en
-> local y falla en producción. `check.sh` detecta estos casos.
-
----
-
-## Notas de seguridad
-
-- Ninguna credencial llega al cliente. El navegador llama a `/api/videos`, y la
-  clave vive como secreto del servidor.
-- La función usa `playlistItems` (1 unidad de cuota) en lugar de `search` (100),
-  con caché de una hora en el borde. Consumo aproximado: 24 unidades diarias
-  frente a las 10.000 disponibles.
-- Todo el DOM se construye con `textContent`; no se interpolan datos en HTML.
-- CSP estricta en `_headers`, sin `unsafe-inline` ni `unsafe-eval`. Si en algún
-  momento hace falta un estilo o script en línea, hay que declarar su hash en
-  lugar de aflojar la política.
+> **Important:** Cloudflare is case-sensitive for filenames; Windows isn't. A
+> `Beat.mp3` referenced as `beat.mp3` works locally and fails in production.
+> `check.sh` catches these cases.
 
 ---
 
-## Licencia
+## Security notes
 
-El **código fuente** de este repositorio se publica bajo licencia MIT (ver
+- No credentials reach the client. The browser calls `/api/videos`, and the
+  key lives as a server-side secret.
+- The function uses `playlistItems` (1 quota unit) instead of `search` (100),
+  with a one-hour edge cache. Approximate usage: ~24 units/day against a
+  10,000 daily quota.
+- All DOM is built with `textContent`; no data is interpolated into HTML.
+- Strict CSP in `_headers`, no `unsafe-inline` or `unsafe-eval`. If an inline
+  style or script is ever needed, its hash should be declared rather than
+  loosening the policy.
+
+---
+
+## License
+
+The **source code** in this repository is released under the MIT license (see
 [LICENSE](LICENSE)).
 
-Esa licencia **no** cubre el contenido creativo: los archivos de audio de
-`public/audio/`, las portadas e imágenes de `public/images/`, el logotipo ni la
-identidad de marca **luvbesly**. Todos los derechos sobre ese material quedan
-reservados. Su uso, distribución o reventa requiere autorización expresa.
+That license does **not** cover the creative content: the audio files in
+`public/audio/`, the artwork and images in `public/images/`, the logo, or the
+**luvbesly** brand identity. All rights to that material are reserved. Use,
+distribution, or resale requires explicit permission.
 
-Los enlaces del VST Vault apuntan a software de terceros alojado externamente.
-Este repositorio no distribuye ni almacena ninguno de esos archivos.
+VST Vault links point to third-party software hosted externally. This
+repository doesn't distribute or store any of those files.
 
 ---
 
-## Contacto
+## Contact
 
 luvbeslymail@gmail.com · [@luvbesly](https://instagram.com/luvbesly) ·
 [BeatStars](https://www.beatstars.com/luvbesly)
