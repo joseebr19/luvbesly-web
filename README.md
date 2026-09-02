@@ -146,13 +146,9 @@ Same process for `kits.json` and `vsts.json`.
 
 ## License
 
-The **source code** in this repository is released under the MIT license (see
-[LICENSE](LICENSE)).
-
-That license does **not** cover the creative content: the audio files in
-`public/audio/`, the artwork and images in `public/images/`, the logo, or the
-**luvbesly** brand identity. All rights to that material are reserved. Use,
-distribution, or resale requires explicit permission.
+No license is granted for reuse — see [LICENSE](LICENSE). This repository is
+public for portfolio purposes only. This covers both the source code and the
+creative content (audio, artwork, and the **luvbesly** brand identity).
 
 VST Vault links point to third-party software hosted externally. This
 repository doesn't distribute or store any of those files.
