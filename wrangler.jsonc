@@ -2,5 +2,12 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "luvbesly-web",
   "compatibility_date": "2026-06-02",
-  "pages_build_output_dir": "./public"
+  "pages_build_output_dir": "./public",
+  "ratelimits": [
+    {
+      "name": "API_LIMITER",
+      "namespace_id": "1002",
+      "simple": { "limit": 60, "period": 60 }
+    }
+  ]
 }

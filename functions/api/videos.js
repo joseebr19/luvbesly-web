@@ -24,6 +24,16 @@ export async function onRequestGet(context) {
         );
     }
 
+    // Rate limiting por IP: protege la cuota de YouTube ante un pico
+    // de peticiones directo al endpoint, saltándose la caché de borde.
+    if (env.API_LIMITER) {
+        const ip = request.headers.get('cf-connecting-ip') || 'unknown';
+        const { success } = await env.API_LIMITER.limit({ key: ip });
+        if (!success) {
+            return json({ error: 'Too many requests' }, 429, { 'Cache-Control': 'no-store' });
+        }
+    }
+
     // Caché de borde: la mayoría de visitas no llegan a YouTube
     const cache = caches.default;
     const cacheKey = new Request(new URL('/api/videos', request.url), { method: 'GET' });
