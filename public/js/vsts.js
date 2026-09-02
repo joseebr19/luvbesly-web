@@ -95,7 +95,7 @@ function buildCard(vst) {
         image.src = FALLBACK_IMAGE;
     }, { once: true });
 
-    const download = externalLink(vst.downloadUrl, 'GET VST', 'kit-btn free-btn');
+    const download = externalLink(vst.downloadUrl, 'GET VST', 'kit-btn');
     download.setAttribute('aria-label', `Download ${vst.title}`);
 
     return el('div', {

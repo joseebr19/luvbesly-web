@@ -1021,16 +1021,6 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     cursor: not-allowed;
 }
 
-.free-btn {
-    background-color: var(--text-pure);
-    color: var(--bg-dark);
-}
-
-.free-btn:hover {
-    background-color: var(--text-gray-light);
-    color: var(--bg-dark);
-}
-
 
 /* ---- Buscador y aviso del VST Vault ---- */
 .vst-disclaimer {

@@ -80,7 +80,7 @@ function buildInfo(kit) {
         action = externalLink(
             kit.buyUrl,
             kit.btnText,
-            kit.isFree ? 'kit-btn free-btn' : 'kit-btn',
+            'kit-btn',
         );
         action.setAttribute('aria-label', `${kit.btnText} — ${kit.title}`);
     }
