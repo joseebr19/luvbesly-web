@@ -156,10 +156,3 @@ distribution, or resale requires explicit permission.
 
 VST Vault links point to third-party software hosted externally. This
 repository doesn't distribute or store any of those files.
-
----
-
-## Contact
-
-luvbeslymail@gmail.com · [@luvbesly](https://instagram.com/luvbesly) ·
-[BeatStars](https://www.beatstars.com/luvbesly)
