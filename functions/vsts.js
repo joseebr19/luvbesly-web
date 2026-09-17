@@ -1,20 +1,24 @@
 // ==========================================
-// /vsts.html — inyecta el archivo de VSTs en el HTML servido
+// /vsts — inyecta el archivo de VSTs en el HTML servido
 // ==========================================
-// Mismo patrón que beats.html.js y kits.html.js. No se añade
-// JSON-LD de producto aquí: son plugins de terceros que el sitio
-// solo enlaza (no los vende), así que un Product/Offer sería
-// inexacto. Se deja como listado indexable normal.
+// Vive en la ruta sin extensión por el mismo motivo que beats.js y
+// kits.js: Cloudflare Pages redirige /vsts.html -> /vsts, que es la
+// URL real que ve el visitante y Google.
+//
+// No se añade JSON-LD de producto aquí: son plugins de terceros que
+// el sitio solo enlaza (no los vende), así que un Product/Offer
+// sería inexacto. Se deja como listado indexable normal.
 
 import { vstsGridHtml } from './_lib/html.js';
+import { fetchAsset } from './_lib/assets.js';
 
 export async function onRequestGet(context) {
     const { request, env } = context;
     const url = new URL(request.url);
 
     const [pageResponse, dataResponse] = await Promise.all([
-        env.ASSETS.fetch(request),
-        env.ASSETS.fetch(new URL('/data/vsts.json', url)),
+        fetchAsset(env, request),
+        fetchAsset(env, new URL('/data/vsts.json', url)),
     ]);
 
     if (!pageResponse.ok) return pageResponse;
