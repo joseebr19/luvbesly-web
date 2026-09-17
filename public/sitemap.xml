@@ -5,31 +5,31 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://luvbesly.com/beats.html</loc>
+    <loc>https://luvbesly.com/beats</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://luvbesly.com/kits.html</loc>
+    <loc>https://luvbesly.com/kits</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://luvbesly.com/kit-luvme.html</loc>
+    <loc>https://luvbesly.com/kit-luvme</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://luvbesly.com/kit-summer.html</loc>
+    <loc>https://luvbesly.com/kit-summer</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://luvbesly.com/vsts.html</loc>
+    <loc>https://luvbesly.com/vsts</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://luvbesly.com/videos.html</loc>
+    <loc>https://luvbesly.com/videos</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://luvbesly.com/privacy.html</loc>
+    <loc>https://luvbesly.com/privacy</loc>
     <priority>0.3</priority>
   </url>
 </urlset>

@@ -42,10 +42,12 @@ used for local dev and deployment.
 │   └── audio/
 ├── functions/
 │   ├── api/videos.js       Cached proxy to the YouTube API
-│   ├── beats.html.js       Server-renders the beat list into beats.html
-│   ├── kits.html.js        Server-renders the kits grid into kits.html
-│   ├── vsts.html.js        Server-renders the VST grid into vsts.html
-│   └── _lib/html.js        Shared render/escape helpers for the above
+│   ├── beats.js            Server-renders the beat list at /beats
+│   ├── kits.js             Server-renders the kits grid at /kits
+│   ├── vsts.js             Server-renders the VST grid at /vsts
+│   └── _lib/
+│       ├── html.js         Render/escape helpers for the above
+│       └── assets.js       Fetches a static asset, following redirects
 ├── check.sh                Structure and integrity check
 ├── wrangler.jsonc
 └── .dev.vars               Local secrets — git-ignored
@@ -141,16 +143,26 @@ to be empty until client JS fetched `data/*.json` and built the DOM. That
 left crawlers and link-preview bots (which mostly don't run JS) seeing
 "Loading…" instead of the actual catalog.
 
-`functions/beats.html.js`, `kits.html.js` and `vsts.html.js` intercept
-those routes (Pages Functions take priority over the matching static
-asset), fetch the original HTML and JSON straight from `ASSETS`, and use
-`HTMLRewriter` to inject the same markup the client would build, plus
-JSON-LD (`MusicRecording` for beats, `Product`/`Offer` for purchasable
-kits). The client JS is untouched: on load it still clears the container
-and rebuilds it with working listeners (play/pause, search), so the
-server-rendered markup is only what a non-JS visitor or a crawler sees
-before that happens. Editing `data/*.json` is still the only thing needed
-to publish a new beat/kit/plugin — nothing else to update.
+`functions/beats.js`, `kits.js` and `vsts.js` intercept those routes, fetch
+the original HTML and JSON straight from `ASSETS`, and use `HTMLRewriter`
+to inject the same markup the client would build, plus JSON-LD
+(`MusicRecording` for beats, `Product`/`Offer` for purchasable kits). The
+client JS is untouched: on load it still clears the container and rebuilds
+it with working listeners (play/pause, search), so the server-rendered
+markup is only what a non-JS visitor or a crawler sees before that happens.
+Editing `data/*.json` is still the only thing needed to publish a new
+beat/kit/plugin — nothing else to update.
+
+**Why these functions live at `/beats`, not `/beats.html`:** Cloudflare
+Pages redirects requests for `*.html` to the extensionless URL by default
+(`/beats.html` → `/beats`, 308). That redirect happens even for a request
+routed through a Pages Function that calls `env.ASSETS.fetch()` — the
+`.html` route would just receive the redirect response and pass it
+through unmodified. So every internal link, canonical tag, Open Graph
+`url`, and `sitemap.xml` entry uses the extensionless form, matching the
+URL Cloudflare actually serves content at (and that Google actually
+indexes). `functions/_lib/assets.js` follows a stray redirect defensively,
+but in normal operation none of these functions should hit one.
 
 Purchases still go through BeatStars exactly as before; this only changes
 what's visible in the initial HTML response, not the buy links.
