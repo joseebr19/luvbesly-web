@@ -31,6 +31,16 @@ done
 [ $miss -eq 0 ] && echo "  ok   todas las rutas apuntan a archivos reales"
 bad=$((bad+miss))
 
+echo "== Rutas hardcodeadas en JS (fallbacks, etc.) =="
+# grep.json de arriba no ve esto: rutas /images o /audio escritas directamente
+# en el código (p.ej. una imagen de fallback), no dentro de data/*.json
+miss2=0
+for f in $(grep -roh "['\"]\/\(images\|audio\)\/[^'\"]*['\"]" public/js functions 2>/dev/null | tr -d "'\"" | sort -u); do
+  [ -f "public$f" ] || { echo "  FALTA public$f (referenciado en JS)"; miss2=$((miss2+1)); }
+done
+[ $miss2 -eq 0 ] && echo "  ok   todas las rutas hardcodeadas en JS existen"
+bad=$((bad+miss2))
+
 echo "== Seguridad =="
 grep -rl "AIza" public/ 2>/dev/null && { echo "  ERROR clave de API en public/"; bad=$((bad+1)); } || echo "  ok   sin claves en public/"
 grep -q "node_modules" .gitignore && echo "  ok   node_modules ignorado" || { echo "  ERROR node_modules sin ignorar"; bad=$((bad+1)); }
