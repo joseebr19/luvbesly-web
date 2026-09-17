@@ -745,12 +745,15 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     position: relative;
     cursor: pointer;
     border-radius: 2px;
-    transition: height 0.15s ease;
+    transition: transform 0.15s ease;
 }
 
+/* Antes esto animaba height (reflow); scaleY da el mismo engrosamiento
+   visual --centrado igual, porque el padre ya hace align-items:
+   center-- sin recalcular layout en cada frame. */
 .progress-container:hover,
 .progress-container:focus-visible {
-    height: 5px;
+    transform: scaleY(1.6667);
 }
 
 /* Con tabindex la barra se enfoca con teclado: hay que verlo */
@@ -1406,7 +1409,10 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
 
     /* NAV DESPLEGABLE
        top: 100% en vez de un 70px fijo, que se descuadraba
-       en cuanto cambiaba el padding de la cabecera */
+       en cuanto cambiaba el padding de la cabecera.
+       grid-template-rows 0fr/1fr en vez de max-height: anima el alto
+       real del contenido (sin el "salto" de un max-height inventado
+       de más) sin forzar un reflow tan caro como animar height. */
     nav {
         position: absolute;
         top: 100%;
@@ -1414,20 +1420,25 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
         width: 100%;
         background-color: var(--bg-dark);
         border-bottom: 1px solid var(--border-dark);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height var(--t-base);
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows var(--t-base);
         z-index: 999;
     }
 
     nav.open {
-        max-height: 420px;
+        grid-template-rows: 1fr;
     }
 
+    /* Un hijo de grid no encoge de forma nativa por debajo de su
+       contenido: overflow + min-height:0 son los que permiten que
+       la fila colapse a 0 con la técnica de arriba. */
     nav ul {
         flex-direction: column;
         gap: 0;
         padding: 10px 0;
+        overflow: hidden;
+        min-height: 0;
     }
 
     nav ul li a {
