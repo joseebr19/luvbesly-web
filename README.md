@@ -41,7 +41,11 @@ used for local dev and deployment.
 │   ├── images/
 │   └── audio/
 ├── functions/
-│   └── api/videos.js       Cached proxy to the YouTube API
+│   ├── api/videos.js       Cached proxy to the YouTube API
+│   ├── beats.html.js       Server-renders the beat list into beats.html
+│   ├── kits.html.js        Server-renders the kits grid into kits.html
+│   ├── vsts.html.js        Server-renders the VST grid into vsts.html
+│   └── _lib/html.js        Shared render/escape helpers for the above
 ├── check.sh                Structure and integrity check
 ├── wrangler.jsonc
 └── .dev.vars               Local secrets — git-ignored
@@ -129,6 +133,27 @@ Same process for `kits.json` and `vsts.json`.
 > `check.sh` catches these cases.
 
 ---
+
+## SEO / server-side rendering
+
+`beats.html`, `kits.html` and `vsts.html` are static files whose lists used
+to be empty until client JS fetched `data/*.json` and built the DOM. That
+left crawlers and link-preview bots (which mostly don't run JS) seeing
+"Loading…" instead of the actual catalog.
+
+`functions/beats.html.js`, `kits.html.js` and `vsts.html.js` intercept
+those routes (Pages Functions take priority over the matching static
+asset), fetch the original HTML and JSON straight from `ASSETS`, and use
+`HTMLRewriter` to inject the same markup the client would build, plus
+JSON-LD (`MusicRecording` for beats, `Product`/`Offer` for purchasable
+kits). The client JS is untouched: on load it still clears the container
+and rebuilds it with working listeners (play/pause, search), so the
+server-rendered markup is only what a non-JS visitor or a crawler sees
+before that happens. Editing `data/*.json` is still the only thing needed
+to publish a new beat/kit/plugin — nothing else to update.
+
+Purchases still go through BeatStars exactly as before; this only changes
+what's visible in the initial HTML response, not the buy links.
 
 ## Security notes
 
