@@ -162,3 +162,41 @@ export function vstsGridHtml(vsts) {
         </div>
     `.trim()).join('\n');
 }
+
+export function videosGridHtml(videos) {
+    if (!Array.isArray(videos) || videos.length === 0) {
+        return '<p class="loading-state">No videos published yet.</p>';
+    }
+
+    return videos.map((video) => `
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube-nocookie.com/embed/${escapeAttr(video.id)}" title="${escapeAttr(video.title)}" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <div class="video-info">
+                <h3>${escapeHtml(video.title)}</h3>
+            </div>
+        </div>
+    `.trim()).join('\n');
+}
+
+export function videosJsonLd(videos, pageUrl) {
+    if (!Array.isArray(videos) || videos.length === 0) return null;
+
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        url: pageUrl,
+        itemListElement: videos.map((video, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            item: {
+                '@type': 'VideoObject',
+                name: video.title,
+                url: `https://www.youtube.com/watch?v=${video.id}`,
+                embedUrl: `https://www.youtube-nocookie.com/embed/${video.id}`,
+                thumbnailUrl: `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`,
+            },
+        })),
+    };
+}
