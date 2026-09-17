@@ -45,7 +45,7 @@
     --text-gray-light: #cccccc;
     --text-gray-medium: #949494;   /* antes #888888 */
     --text-gray-dark: #7a7a7a;     /* antes #555555 */
-    --text-muted: #767676;         /* antes #444444 */
+    --text-muted: #8a8a8a;         /* antes #767676 (4.49:1, por debajo de AA); antes de eso #444444 */
     --text-specs: #8a8a8a;         /* antes #666666 */
 
     /* Acentos */
@@ -140,7 +140,7 @@ iframe {
     color: var(--bg-dark);
     padding: 12px 24px;
     font-family: var(--font-display);
-    font-weight: 700;
+    font-weight: 800;
     font-size: 0.8rem;
     letter-spacing: 1px;
     text-decoration: none;
@@ -576,28 +576,6 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     gap: 15px;
 }
 
-.buy-btn {
-    background-color: transparent;
-    border: 1px solid var(--text-pure);
-    color: var(--text-pure);
-    padding: 12px 25px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: background-color var(--t-base), color var(--t-base);
-}
-
-.buy-btn:hover {
-    background-color: var(--text-pure);
-    color: var(--bg-dark);
-}
-
-.buy-link-btn {
-    text-decoration: none;
-    display: inline-block;
-}
-
 /* BOTÓN SHOW ALL BEATS */
 .show-all-container {
     display: flex;
@@ -755,7 +733,7 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     font-family: var(--font-display);
     font-size: 0.7rem;
     color: var(--text-gray-dark);
-    font-weight: 700;
+    font-weight: 800;
     min-width: 35px;
     text-align: center;
 }
@@ -985,7 +963,7 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
 .kit-price {
     font-family: var(--font-display);
     font-size: 1.1rem;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .kit-price.free {
@@ -1017,7 +995,7 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
 }
 
 .kit-btn[disabled] {
-    opacity: 0.3;
+    opacity: 0.55;
     cursor: not-allowed;
 }
 
