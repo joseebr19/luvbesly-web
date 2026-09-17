@@ -101,7 +101,7 @@ function buildCard(vst) {
     return el('div', {
         className: 'kit-card',
         children: [
-            el('div', { className: 'kit-cover free-kit', children: [image] }),
+            el('div', { className: 'kit-cover free-kit vst-cover', children: [image] }),
             el('div', {
                 className: 'kit-info',
                 children: [

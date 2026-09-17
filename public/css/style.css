@@ -906,6 +906,14 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     transform: scale(1.03);
 }
 
+/* Las capturas de plugins de terceros vienen en proporciones muy
+   dispares (banners panorámicos, capturas cuadradas...). Con cover
+   se recortaban hasta perder el logo o el nombre del plugin; con
+   contain se ven completas sobre el fondo degradado de .kit-cover. */
+.kit-cover.vst-cover img {
+    object-fit: contain;
+}
+
 .free-kit {
     background: linear-gradient(135deg, #1c1c1c 0%, #0a0a0a 100%);
 }
