@@ -147,7 +147,7 @@ export function vstsGridHtml(vsts) {
 
     return vsts.map((vst) => `
         <div class="kit-card">
-            <div class="kit-cover free-kit">
+            <div class="kit-cover free-kit vst-cover">
                 <img src="${escapeAttr(vst.image)}" alt="${escapeAttr(vst.title)} interface" loading="lazy" decoding="async">
                 <!-- El fallback de imagen rota se aplica por JS (dom.js), no inline: la CSP del sitio bloquea onerror inline. -->
             </div>
