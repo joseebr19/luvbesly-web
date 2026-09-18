@@ -265,6 +265,7 @@ nav ul li a.active {
    5. HERO
    ========================================== */
 .hero {
+    position: relative;
     flex: 1;
     display: flex;
     justify-content: center;
@@ -272,6 +273,23 @@ nav ul li a.active {
     text-align: center;
     padding: 60px 20px;
     background: var(--bg-main);
+}
+
+.hero-doodle {
+    position: absolute;
+    left: 4%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16vw;
+    max-width: 200px;
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content h1 {
@@ -1405,6 +1423,10 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
    15. RESPONSIVE
    ========================================== */
 @media (max-width: 900px) {
+    .hero-doodle {
+        display: none;
+    }
+
     .kit-main-section {
         flex-direction: column;
         text-align: center;
