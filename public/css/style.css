@@ -341,7 +341,7 @@ nav ul li a.active {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 40px;
-    max-width: 500px;
+    max-width: 760px;
 }
 
 

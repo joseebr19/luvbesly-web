@@ -26,6 +26,19 @@
     "buyUrl": "https://bsta.rs/fs9ISx"
   },
   {
+    "id": 4,
+    "title": "5K BBBBESLY",
+    "description": "A free drop from the underground collection — 808s, claps, snares and percussion built for modern trap beats.",
+    "price": "FREE",
+    "isFree": true,
+    "isLocked": false,
+    "detailUrl": "/kit-5k-bbbbesly",
+    "coverImage": "/images/soundkits/5k-bbbbesly.webp",
+    "coverText": null,
+    "btnText": "DOWNLOAD",
+    "buyUrl": "https://bsta.rs/Bq2Qcw"
+  },
+  {
     "id": 2,
     "title": "COMING SOON",
     "description": "Currently in development.",
