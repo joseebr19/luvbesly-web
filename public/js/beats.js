@@ -47,7 +47,7 @@ export async function initBeatsPage() {
                         el('div', {
                             className: 'beat-details',
                             children: [
-                                el('h3', { text: beat.title }),
+                                el('h2', { text: beat.title }),
                                 el('span', {
                                     className: 'beat-bpm',
                                     text: [beat.bpm, beat.key].filter(Boolean).join(' · '),

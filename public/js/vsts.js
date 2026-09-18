@@ -138,7 +138,6 @@ function buildCard(vst) {
             href: vst.downloadUrl,
             target: '_blank',
             rel: 'noopener noreferrer',
-            'aria-label': `Download ${vst.title}`,
         },
         children: [
             el('div', { className: 'kit-cover free-kit vst-cover product-cutout', children: [image] }),
@@ -147,7 +146,14 @@ function buildCard(vst) {
                 children: [
                     el('p', {
                         className: 'sk-name',
-                        children: [downloadIcon(), el('span', { text: vst.title.toLowerCase() })],
+                        // Nombre accesible calculado del propio contenido visible
+                        // (título + sistema), en vez de un aria-label que lo
+                        // sustituiría entero: así nunca puede desincronizarse.
+                        children: [
+                            el('span', { className: 'visually-hidden', text: 'Download ' }),
+                            downloadIcon(),
+                            el('span', { text: vst.title.toLowerCase() }),
+                        ],
                     }),
                     el('p', { className: 'sk-price', text: vst.system.toLowerCase() }),
                 ],
