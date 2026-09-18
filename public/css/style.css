@@ -1110,7 +1110,8 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
 
 .breadcrumb a {
     color: var(--text-gray-medium);
-    text-decoration: none;
+    text-decoration: underline;
+    text-underline-offset: 3px;
     transition: color var(--t-base);
     padding-block: 4px;
 }
