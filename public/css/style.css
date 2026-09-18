@@ -482,7 +482,7 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     padding: 15px 0 0;
 }
 
-.video-info h3 {
+.video-info h2 {
     font-family: var(--font-main);
     font-size: 0.95rem;
     font-weight: 500;
@@ -492,7 +492,7 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     transition: color var(--t-base);
 }
 
-.video-card:hover .video-info h3 {
+.video-card:hover .video-info h2 {
     color: var(--text-pure);
 }
 
@@ -587,7 +587,7 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     translate: none;
 }
 
-.beat-details h3 {
+.beat-details h2 {
     font-family: var(--font-main);
     font-size: 1.1rem;
     font-weight: 500;
@@ -681,7 +681,7 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     min-width: 0;
 }
 
-.player-track-info h4 {
+.player-track-info p {
     margin: 0 0 2px;
     font-family: var(--font-display);
     color: var(--text-pure);
@@ -1038,7 +1038,7 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     padding: 20px 24px;
 }
 
-.vst-disclaimer h3 {
+.vst-disclaimer h2 {
     color: var(--accent-vault);
     font-family: var(--font-display);
     letter-spacing: 1px;

@@ -38,7 +38,7 @@ export function beatsListHtml(beats) {
             <div class="beat-main">
                 <button class="play-btn" type="button" aria-label="Play ${escapeAttr(beat.title)}">▶</button>
                 <div class="beat-details">
-                    <h3>${escapeHtml(beat.title)}</h3>
+                    <h2>${escapeHtml(beat.title)}</h2>
                     <span class="beat-bpm">${escapeHtml([beat.bpm, beat.key].filter(Boolean).join(' · '))}</span>
                 </div>
             </div>
@@ -140,14 +140,17 @@ export function vstsGridHtml(vsts) {
     // Mismo patrón minimal que sound kits: captura flotante sin caja +
     // nombre/sistema en minúscula, sin descripción ni badge. Toda la
     // tarjeta enlaza directo a la descarga (no hay página de detalle).
+    // Nombre accesible calculado del propio contenido visible (título +
+    // sistema) vía el span visually-hidden, en vez de un aria-label que
+    // lo sustituiría entero: así nunca puede desincronizarse.
     return vsts.map((vst) => `
-        <a class="sk-card" href="${escapeAttr(vst.downloadUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Download ${escapeAttr(vst.title)}">
+        <a class="sk-card" href="${escapeAttr(vst.downloadUrl)}" target="_blank" rel="noopener noreferrer">
             <div class="kit-cover free-kit vst-cover product-cutout">
                 <img src="${escapeAttr(vst.image)}" alt="${escapeAttr(vst.title)} interface" loading="lazy" decoding="async">
                 <!-- El fallback de imagen rota se aplica por JS (dom.js), no inline: la CSP del sitio bloquea onerror inline. -->
             </div>
             <div class="sk-meta">
-                <p class="sk-name">${DOWNLOAD_ICON_SVG}<span>${escapeHtml(vst.title.toLowerCase())}</span></p>
+                <p class="sk-name"><span class="visually-hidden">Download </span>${DOWNLOAD_ICON_SVG}<span>${escapeHtml(vst.title.toLowerCase())}</span></p>
                 <p class="sk-price">${escapeHtml(vst.system.toLowerCase())}</p>
             </div>
         </a>
@@ -165,7 +168,7 @@ export function videosGridHtml(videos) {
                 <iframe src="https://www.youtube-nocookie.com/embed/${escapeAttr(video.id)}" title="${escapeAttr(video.title)}" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
             <div class="video-info">
-                <h3>${escapeHtml(video.title)}</h3>
+                <h2>${escapeHtml(video.title)}</h2>
             </div>
         </div>
     `.trim()).join('\n');

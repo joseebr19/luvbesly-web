@@ -66,7 +66,7 @@ function buildCard(video) {
             el('div', { className: 'video-wrapper', children: [iframe] }),
             el('div', {
                 className: 'video-info',
-                children: [el('h3', { text: video.title })],
+                children: [el('h2', { text: video.title })],
             }),
         ],
     });
