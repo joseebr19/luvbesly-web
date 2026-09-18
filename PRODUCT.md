@@ -70,8 +70,9 @@ sound and site voice both carry.
 
 - Name: **luvbesly**. Tagline: "besly sound system — we don't play by
   their rules."
-- Genres: Trap, Experimental, Underground Hip Hop (per the site's
-  `MusicGroup` structured data).
+- Genres: Trap, Underground Hip Hop (per the site's `MusicGroup`
+  structured data). Copy leans on "underground," not "raw" or
+  "experimental," across meta descriptions and product taglines.
 - Channels: Instagram `@luvbesly`, BeatStars `beatstars.com/luvbesly`,
   contact email `luvbeslymail@gmail.com`.
 - Licensing/legal: no license is granted for reuse of the source, audio,

@@ -2,7 +2,7 @@
 // PÁGINA DE SOUND KITS
 // ==========================================
 
-import { el, externalLink, clear, setState, loadJSON } from './dom.js';
+import { el, clear, setState, loadJSON } from './dom.js';
 
 export async function initKitsPage() {
     const grid = document.getElementById('kits-grid');
@@ -27,10 +27,20 @@ export async function initKitsPage() {
     grid.setAttribute('aria-busy', 'false');
 }
 
+// Tarjeta minimal: imagen flotante + nombre + precio, sin badge, sin
+// descripción, sin botón. Toda la tarjeta es el enlace a la ficha del
+// kit (si tiene página de detalle real).
 function buildCard(kit) {
-    return el('div', {
-        className: 'kit-card',
-        children: [buildCover(kit), buildInfo(kit)],
+    const children = [buildCover(kit), buildMeta(kit)];
+
+    if (!kit.detailUrl || kit.detailUrl === '#') {
+        return el('div', { className: 'sk-card', children });
+    }
+
+    return el('a', {
+        className: 'sk-card',
+        attrs: { href: kit.detailUrl, 'aria-label': `${kit.title} details` },
+        children,
     });
 }
 
@@ -43,8 +53,8 @@ function buildCover(kit) {
         });
     }
 
-    const cover = el('div', {
-        className: kit.isFree ? 'kit-cover free-kit' : 'kit-cover',
+    return el('div', {
+        className: kit.isFree ? 'kit-cover free-kit product-cutout' : 'kit-cover product-cutout',
         children: [
             el('img', {
                 attrs: {
@@ -56,50 +66,14 @@ function buildCover(kit) {
             }),
         ],
     });
-
-    // Solo enlazamos si hay página de detalle real
-    if (!kit.detailUrl || kit.detailUrl === '#') return cover;
-
-    return el('a', {
-        className: 'kit-link',
-        attrs: { href: kit.detailUrl, 'aria-label': `${kit.title} details` },
-        children: [cover],
-    });
 }
 
-function buildInfo(kit) {
-    let action;
-
-    if (kit.isLocked) {
-        action = el('button', {
-            className: 'kit-btn',
-            text: kit.btnText,
-            attrs: { type: 'button', disabled: true },
-        });
-    } else {
-        action = externalLink(
-            kit.buyUrl,
-            kit.btnText,
-            'kit-btn',
-        );
-        action.setAttribute('aria-label', `${kit.btnText} — ${kit.title}`);
-    }
-
+function buildMeta(kit) {
     return el('div', {
-        className: 'kit-info',
+        className: 'sk-meta',
         children: [
-            el('h3', { text: kit.title }),
-            el('p', { text: kit.description }),
-            el('div', {
-                className: 'kit-footer',
-                children: [
-                    el('span', {
-                        className: kit.isFree ? 'kit-price free' : 'kit-price',
-                        text: kit.price,
-                    }),
-                    action,
-                ],
-            }),
+            el('p', { className: 'sk-name', text: kit.title.toLowerCase() }),
+            el('p', { className: 'sk-price', text: kit.price.toLowerCase() }),
         ],
     });
 }

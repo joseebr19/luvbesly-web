@@ -59,7 +59,7 @@ export async function initBeatsPage() {
                 el('div', {
                     className: 'beat-actions',
                     children: [
-                        externalLink(beat.buyUrl, 'BUY LICENSE', 'kit-btn'),
+                        externalLink(beat.buyUrl, 'Buy license', 'kit-btn'),
                     ],
                 }),
             ],
