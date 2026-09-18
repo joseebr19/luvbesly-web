@@ -37,18 +37,5 @@
     "coverText": null,
     "btnText": "DOWNLOAD",
     "buyUrl": "https://bsta.rs/Bq2Qcw"
-  },
-  {
-    "id": 2,
-    "title": "COMING SOON",
-    "description": "Currently in development.",
-    "price": "FREE",
-    "isFree": true,
-    "isLocked": true,
-    "detailUrl": "#",
-    "coverImage": null,
-    "coverText": "NEXT KIT",
-    "btnText": "LOCKED",
-    "buyUrl": "#"
   }
 ]
