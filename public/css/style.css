@@ -237,7 +237,7 @@ nav ul li a.active {
     cursor: pointer;
     background: none;
     border: none;
-    padding: 5px;
+    padding: 12px;
 }
 
 .hamburger span {
@@ -329,6 +329,7 @@ nav ul li a.active {
     text-decoration-color: transparent;
     white-space: nowrap;
     transition: color var(--t-base), text-decoration-color var(--t-base);
+    padding-block: 4px;
 }
 
 .home-showcase-header a:hover {
@@ -361,7 +362,7 @@ nav ul li a.active {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 11px 24px;
+    padding: 14px 26px;
     font-family: var(--font-display);
     font-weight: 900;
     font-size: 0.75rem;
@@ -407,7 +408,6 @@ footer {
     text-align: center;
     padding: 25px;
     font-size: 0.75rem;
-    letter-spacing: 1px;
     /* Antes era #333 sobre negro: prácticamente ilegible */
     color: var(--text-muted);
     border-top: 1px solid var(--border-dark);
@@ -727,7 +727,7 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     align-items: center;
     justify-content: center;
     transition: color var(--t-fast);
-    padding: 5px;
+    padding: 10px;
 }
 
 .ctrl-btn:hover {
@@ -738,8 +738,8 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     color: var(--bg-dark);
     font-size: 0.9rem;
     background-color: var(--text-pure);
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     flex-shrink: 0;
     padding: 0;
@@ -1004,7 +1004,7 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
 
 .kit-btn {
     color: var(--text-pure);
-    padding: 0;
+    padding: 10px 4px;
     font-size: 0.9rem;
     font-weight: 500;
     text-decoration: underline;
@@ -1061,7 +1061,7 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
 
 .vst-search-input {
     width: 100%;
-    padding: 12px 20px;
+    padding: 14px 20px;
     background: var(--border-dark);
     border: 2px solid var(--border-mid);
     border-radius: var(--radius-none);
@@ -1112,6 +1112,7 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     color: var(--text-gray-medium);
     text-decoration: none;
     transition: color var(--t-base);
+    padding-block: 4px;
 }
 
 .breadcrumb a:hover {
@@ -1229,6 +1230,7 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     text-decoration: none;
     width: fit-content;
     transition: color var(--t-base);
+    padding-block: 4px;
 }
 
 .pdp-category-link:hover {
@@ -1437,13 +1439,17 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
         display: flex;
     }
 
+    .home-showcase {
+        padding: 60px 20px 70px;
+    }
+
     /* NAV DESPLEGABLE
        top: 100% en vez de un 70px fijo, que se descuadraba
        en cuanto cambiaba el padding de la cabecera.
        grid-template-rows 0fr/1fr en vez de max-height: anima el alto
        real del contenido (sin el "salto" de un max-height inventado
        de más) sin forzar un reflow tan caro como animar height. */
-    nav {
+    #main-nav {
         position: absolute;
         top: 100%;
         left: 0;
@@ -1456,14 +1462,14 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
         z-index: 999;
     }
 
-    nav.open {
+    #main-nav.open {
         grid-template-rows: 1fr;
     }
 
     /* Un hijo de grid no encoge de forma nativa por debajo de su
        contenido: overflow + min-height:0 son los que permiten que
        la fila colapse a 0 con la técnica de arriba. */
-    nav ul {
+    #main-nav ul {
         flex-direction: column;
         gap: 0;
         padding: 10px 0;
@@ -1471,14 +1477,14 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
         min-height: 0;
     }
 
-    nav ul li a {
+    #main-nav ul li a {
         display: block;
         padding: 14px 25px;
         border-bottom: 1px solid #0a0a0a;
     }
 
-    nav ul li a:hover,
-    nav ul li a.active {
+    #main-nav ul li a:hover,
+    #main-nav ul li a.active {
         border-bottom-color: #0a0a0a;
         background-color: #0a0a0a;
     }
