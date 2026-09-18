@@ -2,9 +2,41 @@
 // VST VAULT
 // ==========================================
 
-import { el, externalLink, clear, setState, loadJSON, debounce } from './dom.js';
+import { el, clear, setState, loadJSON, debounce } from './dom.js';
 
 const FALLBACK_IMAGE = '/images/vst-default.png';
+const SVG_NS = 'http://www.w3.org/2000/svg';
+
+// Icono de descarga dibujado a mano (trazo irregular, no un icon set
+// genérico), para que quede claro que el nombre es el punto de
+// descarga. Construido con createElementNS porque el helper el() de
+// dom.js usa createElement y no sirve para nodos SVG.
+function downloadIcon() {
+    const svg = document.createElementNS(SVG_NS, 'svg');
+    svg.setAttribute('class', 'icon-sketch');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('width', '15');
+    svg.setAttribute('height', '15');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '1.8');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke-linecap', 'round');
+    svg.setAttribute('stroke-linejoin', 'round');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+
+    [
+        'M12 3.4 Q11.7 9.2 12.1 14.6',
+        'M8.3 11.6 Q10 14.3 12.1 14.8 Q14.1 14.2 15.6 11.4',
+        'M5.4 18.2 Q12 19.4 18.5 18.1',
+    ].forEach((d) => {
+        const path = document.createElementNS(SVG_NS, 'path');
+        path.setAttribute('d', d);
+        svg.append(path);
+    });
+
+    return svg;
+}
 
 export async function initVstsPage() {
     const grid = document.getElementById('vsts-grid');
@@ -58,7 +90,7 @@ export async function initVstsPage() {
         clear(grid);
 
         if (matches.length === 0) {
-            setState(grid, 'NO PLUGINS FOUND');
+            setState(grid, 'No plugins found.');
             if (count) count.textContent = `0 of ${vsts.length} plugins`;
             return;
         }
@@ -77,6 +109,11 @@ export async function initVstsPage() {
     }
 }
 
+// Tarjeta minimal, igual patrón que sound kits: captura flotante sin
+// caja + nombre/sistema en minúscula, sin descripción ni badge. Toda
+// la tarjeta enlaza directo a la descarga (no hay página de detalle
+// para plugins). La descripción sigue viva en el índice de búsqueda
+// de arriba, solo deja de pintarse en la tarjeta.
 function buildCard(vst) {
     const image = el('img', {
         attrs: {
@@ -95,25 +132,24 @@ function buildCard(vst) {
         image.src = FALLBACK_IMAGE;
     }, { once: true });
 
-    const download = externalLink(vst.downloadUrl, 'GET VST', 'kit-btn');
-    download.setAttribute('aria-label', `Download ${vst.title}`);
-
-    return el('div', {
-        className: 'kit-card',
+    return el('a', {
+        className: 'sk-card',
+        attrs: {
+            href: vst.downloadUrl,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            'aria-label': `Download ${vst.title}`,
+        },
         children: [
-            el('div', { className: 'kit-cover free-kit vst-cover', children: [image] }),
+            el('div', { className: 'kit-cover free-kit vst-cover product-cutout', children: [image] }),
             el('div', {
-                className: 'kit-info',
+                className: 'sk-meta',
                 children: [
-                    el('h3', { text: vst.title }),
-                    el('p', { text: vst.description }),
-                    el('div', {
-                        className: 'kit-footer',
-                        children: [
-                            el('span', { className: 'kit-price', text: vst.system }),
-                            download,
-                        ],
+                    el('p', {
+                        className: 'sk-name',
+                        children: [downloadIcon(), el('span', { text: vst.title.toLowerCase() })],
                     }),
+                    el('p', { className: 'sk-price', text: vst.system.toLowerCase() }),
                 ],
             }),
         ],

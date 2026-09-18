@@ -43,7 +43,7 @@ export function beatsListHtml(beats) {
                 </div>
             </div>
             <div class="beat-actions">
-                <a href="${escapeAttr(beat.buyUrl)}" target="_blank" rel="noopener noreferrer" class="kit-btn">BUY LICENSE</a>
+                <a href="${escapeAttr(beat.buyUrl)}" target="_blank" rel="noopener noreferrer" class="kit-btn">Buy license</a>
             </div>
         </div>
     `.trim()).join('\n');
@@ -74,22 +74,15 @@ function kitCoverHtml(kit) {
         return `<div class="kit-cover"><span>${escapeHtml(kit.coverText || kit.title)}</span></div>`;
     }
 
-    const coverClass = kit.isFree ? 'kit-cover free-kit' : 'kit-cover';
+    const coverClass = kit.isFree ? 'kit-cover free-kit product-cutout' : 'kit-cover product-cutout';
     const img = `<img src="${escapeAttr(kit.coverImage)}" alt="${escapeAttr(kit.title)} cover art" loading="lazy" decoding="async">`;
-
-    if (!kit.detailUrl || kit.detailUrl === '#') {
-        return `<div class="${coverClass}">${img}</div>`;
-    }
-
-    return `<a class="kit-link" href="${escapeAttr(kit.detailUrl)}" aria-label="${escapeAttr(kit.title)} details"><div class="${coverClass}">${img}</div></a>`;
+    return `<div class="${coverClass}">${img}</div>`;
 }
 
-function kitActionHtml(kit) {
-    if (kit.isLocked) {
-        return `<button class="kit-btn" type="button" disabled>${escapeHtml(kit.btnText)}</button>`;
-    }
-
-    return `<a href="${escapeAttr(kit.buyUrl)}" target="_blank" rel="noopener noreferrer" class="kit-btn" aria-label="${escapeAttr(kit.btnText)} — ${escapeAttr(kit.title)}">${escapeHtml(kit.btnText)}</a>`;
+// Tarjeta minimal: imagen flotante + nombre + precio en texto plano,
+// sin badge, sin descripción, sin botón — igual que public/js/kits.js.
+function kitMetaHtml(kit) {
+    return `<div class="sk-meta"><p class="sk-name">${escapeHtml(kit.title.toLowerCase())}</p><p class="sk-price">${escapeHtml(kit.price.toLowerCase())}</p></div>`;
 }
 
 export function kitsGridHtml(kits) {
@@ -97,19 +90,13 @@ export function kitsGridHtml(kits) {
         return '<p class="loading-state">No kits published yet.</p>';
     }
 
-    return kits.map((kit) => `
-        <div class="kit-card">
-            ${kitCoverHtml(kit)}
-            <div class="kit-info">
-                <h3>${escapeHtml(kit.title)}</h3>
-                <p>${escapeHtml(kit.description)}</p>
-                <div class="kit-footer">
-                    <span class="${kit.isFree ? 'kit-price free' : 'kit-price'}">${escapeHtml(kit.price)}</span>
-                    ${kitActionHtml(kit)}
-                </div>
-            </div>
-        </div>
-    `.trim()).join('\n');
+    return kits.map((kit) => {
+        const inner = `${kitCoverHtml(kit)}${kitMetaHtml(kit)}`;
+        if (!kit.detailUrl || kit.detailUrl === '#') {
+            return `<div class="sk-card">${inner}</div>`;
+        }
+        return `<a class="sk-card" href="${escapeAttr(kit.detailUrl)}" aria-label="${escapeAttr(kit.title)} details">${inner}</a>`;
+    }).join('\n');
 }
 
 export function kitsJsonLd(kits, pageUrl) {
@@ -140,26 +127,30 @@ export function kitsJsonLd(kits, pageUrl) {
     };
 }
 
+// Icono de descarga dibujado a mano, igual que el que construye
+// public/js/vsts.js — aquí va como string porque este archivo genera
+// HTML server-side, no nodos DOM.
+const DOWNLOAD_ICON_SVG = '<svg class="icon-sketch" viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.4 Q11.7 9.2 12.1 14.6"></path><path d="M8.3 11.6 Q10 14.3 12.1 14.8 Q14.1 14.2 15.6 11.4"></path><path d="M5.4 18.2 Q12 19.4 18.5 18.1"></path></svg>';
+
 export function vstsGridHtml(vsts) {
     if (!Array.isArray(vsts) || vsts.length === 0) {
         return '<p class="loading-state">Archive is empty.</p>';
     }
 
+    // Mismo patrón minimal que sound kits: captura flotante sin caja +
+    // nombre/sistema en minúscula, sin descripción ni badge. Toda la
+    // tarjeta enlaza directo a la descarga (no hay página de detalle).
     return vsts.map((vst) => `
-        <div class="kit-card">
-            <div class="kit-cover free-kit vst-cover">
+        <a class="sk-card" href="${escapeAttr(vst.downloadUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Download ${escapeAttr(vst.title)}">
+            <div class="kit-cover free-kit vst-cover product-cutout">
                 <img src="${escapeAttr(vst.image)}" alt="${escapeAttr(vst.title)} interface" loading="lazy" decoding="async">
                 <!-- El fallback de imagen rota se aplica por JS (dom.js), no inline: la CSP del sitio bloquea onerror inline. -->
             </div>
-            <div class="kit-info">
-                <h3>${escapeHtml(vst.title)}</h3>
-                <p>${escapeHtml(vst.description)}</p>
-                <div class="kit-footer">
-                    <span class="kit-price">${escapeHtml(vst.system)}</span>
-                    <a href="${escapeAttr(vst.downloadUrl)}" target="_blank" rel="noopener noreferrer" class="kit-btn" aria-label="Download ${escapeAttr(vst.title)}">GET VST</a>
-                </div>
+            <div class="sk-meta">
+                <p class="sk-name">${DOWNLOAD_ICON_SVG}<span>${escapeHtml(vst.title.toLowerCase())}</span></p>
+                <p class="sk-price">${escapeHtml(vst.system.toLowerCase())}</p>
             </div>
-        </div>
+        </a>
     `.trim()).join('\n');
 }
 
