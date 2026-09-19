@@ -28,6 +28,10 @@ export function jsonLdScript(data) {
     return `<script type="application/ld+json">${json}</script>`;
 }
 
+// Icono de play, mismo trazo que public/js/icons.js (aquí como string
+// porque este archivo genera HTML server-side, no nodos DOM).
+const PLAY_ICON_SVG = '<svg class="icon-sketch" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 5.2 Q8.1 12 8 18.8 Q14.6 15.6 18.8 12.1 Q14.5 8.7 8 5.2 Z" fill="currentColor"></path></svg>';
+
 export function beatsListHtml(beats) {
     if (!Array.isArray(beats) || beats.length === 0) {
         return '<p class="loading-state">No beats published yet.</p>';
@@ -36,15 +40,13 @@ export function beatsListHtml(beats) {
     return beats.map((beat) => `
         <div class="beat-row">
             <div class="beat-main">
-                <button class="play-btn" type="button" aria-label="Play ${escapeAttr(beat.title)}">▶</button>
+                <button class="play-btn" type="button" aria-label="Play ${escapeAttr(beat.title)}">${PLAY_ICON_SVG}</button>
                 <div class="beat-details">
                     <h2>${escapeHtml(beat.title)}</h2>
                     <span class="beat-bpm">${escapeHtml([beat.bpm, beat.key].filter(Boolean).join(' · '))}</span>
                 </div>
             </div>
-            <div class="beat-actions">
-                <a href="${escapeAttr(beat.buyUrl)}" target="_blank" rel="noopener noreferrer" class="kit-btn">Buy license</a>
-            </div>
+            <a href="${escapeAttr(beat.buyUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Buy license</a>
         </div>
     `.trim()).join('\n');
 }

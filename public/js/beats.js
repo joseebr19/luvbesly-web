@@ -4,6 +4,7 @@
 
 import { el, externalLink, clear, setState, loadJSON } from './dom.js';
 import { createPlayer } from './player.js';
+import { icon, setIcon } from './icons.js';
 
 export async function initBeatsPage() {
     const list = document.getElementById('beats-list');
@@ -31,8 +32,8 @@ export async function initBeatsPage() {
     beats.forEach((beat, index) => {
         const playBtn = el('button', {
             className: 'play-btn',
-            text: '▶',
             attrs: { type: 'button', 'aria-label': `Play ${beat.title}` },
+            children: [icon('play')],
         });
 
         playBtn.addEventListener('click', () => player?.select(index));
@@ -56,12 +57,7 @@ export async function initBeatsPage() {
                         }),
                     ],
                 }),
-                el('div', {
-                    className: 'beat-actions',
-                    children: [
-                        externalLink(beat.buyUrl, 'Buy license', 'kit-btn'),
-                    ],
-                }),
+                externalLink(beat.buyUrl, 'Buy license', 'btn btn-primary'),
             ],
         });
 
@@ -79,7 +75,7 @@ export async function initBeatsPage() {
             const isActive = index === activeIndex;
             const isPlaying = isActive && state === 'playing';
 
-            playBtn.textContent = isPlaying ? '⏸' : '▶';
+            setIcon(playBtn, isPlaying ? 'pause' : 'play');
             playBtn.setAttribute(
                 'aria-label',
                 `${isPlaying ? 'Pause' : 'Play'} ${beats[index].title}`,

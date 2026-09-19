@@ -41,7 +41,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Orbitron:wght@800;900&display=swap">
 
     <!-- ESTILOS -->
-    <link rel="stylesheet" href="/css/style.css?v=3">
+    <link rel="stylesheet" href="/css/style.css?v=5">
 </head>
 <body>
 
@@ -66,7 +66,7 @@
 
     <main id="main" class="beats-container">
         <div class="beats-header">
-            <h1>BEAT CATALOG</h1>
+            <h1>BEATS</h1>
             <p>Instant delivery</p>
         </div>
 
@@ -80,8 +80,8 @@
         </noscript>
 
         <div class="show-all-container">
-            <a href="https://www.beatstars.com/luvbesly" target="_blank" rel="noopener noreferrer" class="btn-show-all">
-                SHOW ALL BEATS
+            <a href="https://www.beatstars.com/luvbesly" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">
+                Show all beats
             </a>
         </div>
     </main>
@@ -102,13 +102,13 @@
             <div class="player-controls">
                 <div class="player-buttons">
                     <button id="player-prev-btn" class="ctrl-btn" type="button" aria-label="Previous track">
-                        <span aria-hidden="true">⏮</span>
+                        <svg class="icon-sketch" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 5.5 V18.5"></path><path d="M18.5 5.8 V18.2 L9 12 Z" fill="currentColor"></path></svg>
                     </button>
                     <button id="player-play-btn" class="ctrl-btn main-play" type="button" aria-label="Play">
-                        <span aria-hidden="true">▶</span>
+                        <svg class="icon-sketch" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 5.2 Q8.1 12 8 18.8 Q14.6 15.6 18.8 12.1 Q14.5 8.7 8 5.2 Z" fill="currentColor"></path></svg>
                     </button>
                     <button id="player-next-btn" class="ctrl-btn" type="button" aria-label="Next track">
-                        <span aria-hidden="true">⏭</span>
+                        <svg class="icon-sketch" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 5.5 V18.5"></path><path d="M5.5 5.8 V18.2 L15 12 Z" fill="currentColor"></path></svg>
                     </button>
                 </div>
 
@@ -130,7 +130,7 @@
             </div>
 
             <div class="player-utility">
-                <span class="vol-icon" aria-hidden="true">🔊</span>
+                <span class="vol-icon" aria-hidden="true"><svg class="icon-sketch" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9.5 H8 L13 5.5 V18.5 L8 14.5 H4 Z" fill="currentColor"></path><path d="M16 9 Q18 12 16 15"></path><path d="M18.5 6.5 Q22 12 18.5 17.5"></path></svg></span>
                 <input type="range" id="player-volume" class="vol-slider" min="0" max="1" step="0.05" value="0.8" aria-label="Volume">
             </div>
         </div>

@@ -3,6 +3,7 @@
 // ==========================================
 
 import { formatTime } from './dom.js';
+import { setIcon } from './icons.js';
 
 export function createPlayer(tracks, { onTrackChange } = {}) {
     const root = document.getElementById('global-player');
@@ -34,7 +35,7 @@ export function createPlayer(tracks, { onTrackChange } = {}) {
         onTrackChange?.(index, state);
         if (ui.play) {
             const playing = state === 'playing';
-            ui.play.textContent = playing ? '⏸' : '▶';
+            setIcon(ui.play, playing ? 'pause' : 'play');
             ui.play.setAttribute('aria-label', playing ? 'Pause' : 'Play');
         }
     }

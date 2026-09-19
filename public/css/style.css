@@ -35,6 +35,9 @@
     --border-mid: #222222;
     --border-light: #333333;
     --border-spec: #1a1a1a;
+    /* Contorno de botones secundarios: 3.5:1, el mínimo WCAG 1.4.11
+       para componentes de interfaz */
+    --border-strong: #666666;
 
     /* Texto
        Nota: los grises por debajo de #767676 no llegan al contraste
@@ -294,7 +297,7 @@ nav ul li a.active {
 
 .hero-content h1 {
     font-family: var(--font-display);
-    font-size: clamp(1.7rem, 5vw, 2.75rem);
+    font-size: clamp(2rem, 5.5vw, 3.25rem);
     font-weight: 900;
     letter-spacing: clamp(0.5px, 0.3vw, 2px);
     margin-bottom: 18px;
@@ -303,9 +306,9 @@ nav ul li a.active {
 }
 
 .hero-content p {
-    font-size: 1rem;
+    font-size: 1.15rem;
     color: var(--text-muted);
-    margin-bottom: 40px;
+    margin-bottom: 44px;
     max-width: 38ch;
     margin-inline: auto;
     line-height: 1.6;
@@ -372,10 +375,10 @@ nav ul li a.active {
     gap: 20px;
 }
 
-/* Mismo lenguaje de botón que .btn-show-all: borde recto, tipografía
-   de display en mayúsculas. El primario resuelve en blanco sólido,
-   el secundario en contorno — nada de rojo, la jerarquía la marca
-   el relleno, no el color de alerta. */
+/* Sistema de botón: borde recto, Orbitron en mayúsculas. El primario
+   resuelve en blanco sólido, el secundario en contorno --border-strong
+   (nada de rojo: la jerarquía la marca el relleno). .btn-lg es el
+   tamaño de los CTA de página. */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -387,10 +390,15 @@ nav ul li a.active {
     letter-spacing: 1.5px;
     text-transform: uppercase;
     text-decoration: none;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border-mid);
+    cursor: pointer;
+    border: 1px solid var(--border-strong);
     transition: border-color var(--t-base), background-color var(--t-base),
-                color var(--t-base), translate var(--t-base), box-shadow var(--t-base);
+                color var(--t-base), translate var(--t-base);
+}
+
+.btn-lg {
+    padding: 16px 40px;
+    font-size: 0.8rem;
 }
 
 .btn-primary {
@@ -407,14 +415,21 @@ nav ul li a.active {
 .btn-secondary {
     background-color: transparent;
     color: var(--text-pure);
-    border-color: var(--border-mid);
 }
 
 .btn-secondary:hover {
     border-color: var(--text-pure);
     background-color: #0b0b0b;
     translate: 0 -2px;
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.03);
+}
+
+.btn[disabled],
+.btn[aria-disabled="true"] {
+    background: var(--border-mid);
+    border-color: var(--border-mid);
+    color: var(--text-specs);
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 
@@ -553,23 +568,22 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
 
 .beat-row {
     background-color: var(--bg-dark);
-    border: 1px solid var(--border-dark);
+    border: 1px solid var(--border-mid);
     padding: 20px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
     animation: fadeInBeat 0.4s ease both;
-    transition: translate var(--t-base), border-color var(--t-base);
+    transition: border-color var(--t-base);
 }
 
 .beat-row:hover {
-    border-color: var(--border-light);
-    translate: 4px 0;
+    border-color: var(--border-strong);
 }
 
 .beat-row.is-playing {
-    border-color: var(--text-gray-dark);
+    border-color: var(--text-pure);
 }
 
 .beat-main {
@@ -579,24 +593,28 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
 }
 
 .play-btn {
-    background-color: var(--text-pure);
-    color: var(--bg-dark);
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    font-size: 1rem;
+    background-color: transparent;
+    color: var(--text-pure);
+    border: 1px solid var(--text-pure);
+    width: 40px;
+    height: 40px;
     cursor: pointer;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
     padding: 0;
-    transition: translate var(--t-fast), background-color var(--t-fast);
+    transition: translate var(--t-fast), background-color var(--t-fast),
+                color var(--t-fast);
 }
 
 .play-btn:hover {
     translate: 0 -2px;
+}
+
+.beat-row.is-playing .play-btn {
+    background-color: var(--text-pure);
+    color: var(--bg-dark);
 }
 
 .play-btn[disabled] {
@@ -618,42 +636,17 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     color: var(--text-specs);
 }
 
-.beat-actions {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+.beat-row > .btn {
+    min-height: 40px;
+    padding: 0 20px;
 }
 
-/* BOTÓN SHOW ALL BEATS */
+/* Botón "show all beats": .btn .btn-secondary .btn-lg */
 .show-all-container {
     display: flex;
     justify-content: center;
     margin-top: 45px;
     width: 100%;
-}
-
-.btn-show-all {
-    display: inline-block;
-    padding: 16px 45px;
-    text-decoration: none;
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-pure);
-    background-color: transparent;
-    border: 1px solid var(--border-mid);
-    border-radius: var(--radius-sm);
-    transition: border-color var(--t-base), background-color var(--t-base),
-                translate var(--t-base), box-shadow var(--t-base);
-}
-
-.btn-show-all:hover {
-    border-color: var(--text-pure);
-    background-color: #0b0b0b;
-    translate: 0 -2px;
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.03);
 }
 
 
@@ -669,7 +662,6 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     border-top: 1px solid var(--border-dark);
     padding: 0 40px;
     z-index: 9999;
-    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.9);
     height: var(--player-height);
     display: flex;
     align-items: center;
@@ -712,7 +704,7 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
 
 .player-track-info span {
     color: var(--text-gray-dark);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
@@ -739,7 +731,6 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     background: none;
     border: none;
     color: var(--text-muted);
-    font-size: 0.95rem;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -754,11 +745,9 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
 
 .ctrl-btn.main-play {
     color: var(--bg-dark);
-    font-size: 0.9rem;
     background-color: var(--text-pure);
     width: 40px;
     height: 40px;
-    border-radius: 50%;
     flex-shrink: 0;
     padding: 0;
     transition: background-color var(--t-fast), translate var(--t-fast);
@@ -779,7 +768,7 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
 
 .time-code {
     font-family: var(--font-display);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--text-gray-dark);
     font-weight: 800;
     min-width: 35px;
@@ -792,7 +781,6 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     background: var(--border-mid);
     position: relative;
     cursor: pointer;
-    border-radius: 2px;
     transition: transform 0.15s ease;
 }
 
@@ -814,7 +802,6 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     width: 0%;
     height: 100%;
     background-color: var(--text-pure);
-    border-radius: 2px;
     position: absolute;
     top: 0;
     left: 0;
@@ -828,8 +815,14 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
 }
 
 .vol-icon {
-    font-size: 0.8rem;
+    display: inline-flex;
     color: var(--text-gray-dark);
+}
+
+/* Los iconos SVG del reproductor no capturan el clic del botón */
+.ctrl-btn svg,
+.play-btn svg {
+    pointer-events: none;
 }
 
 .vol-slider {
@@ -838,7 +831,6 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     width: 80px;
     height: 2px;
     background: var(--border-mid);
-    border-radius: 2px;
     cursor: pointer;
 }
 
@@ -848,7 +840,6 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     width: 10px;
     height: 10px;
     background-color: var(--text-pure);
-    border-radius: 50%;
     cursor: pointer;
 }
 
@@ -858,7 +849,6 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     height: 10px;
     background-color: var(--text-pure);
     border: none;
-    border-radius: 50%;
     cursor: pointer;
 }
 
@@ -1534,14 +1524,11 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
         gap: 15px;
     }
 
-    .beat-actions {
-        width: 100%;
-        justify-content: center;
-        border-top: 1px solid var(--border-dark);
-        padding-top: 15px;
+    .beat-row > .btn {
+        align-self: stretch;
     }
 
-    .btn-show-all {
+    .show-all-container .btn {
         width: 100%;
         max-width: 300px;
     }
@@ -1644,7 +1631,6 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     .sk-card:hover,
     .contact-card:hover,
     .btn:hover,
-    .btn-show-all:hover,
     .download-main-btn:hover,
     .play-btn:hover {
         translate: none;
