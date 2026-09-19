@@ -98,35 +98,19 @@
             <h2 id="home-showcase-heading">Sound Kits</h2>
             <a href="/kits">View all kits</a>
         </div>
-        <div class="home-showcase-grid">
-            <a class="sk-card" href="/kit-luvme" aria-label="LUVME DRUMKIT details">
-                <div class="kit-cover free-kit product-cutout">
-                    <img src="/images/soundkits/luvme-drumkit.webp" alt="LUVME DRUMKIT cover art" loading="lazy" decoding="async">
-                </div>
-                <div class="sk-meta">
-                    <p class="sk-name">luvme drumkit</p>
-                    <p class="sk-price">free</p>
-                </div>
-            </a>
-            <a class="sk-card" href="/kit-summer" aria-label="SUMMER STASH KIT details">
-                <div class="kit-cover premium-kit product-cutout">
-                    <img src="/images/soundkits/summer-stash-kit.webp" alt="SUMMER STASH KIT cover art" loading="lazy" decoding="async">
-                </div>
-                <div class="sk-meta">
-                    <p class="sk-name">summer stash kit</p>
-                    <p class="sk-price">$4.99</p>
-                </div>
-            </a>
-            <a class="sk-card" href="/kit-5k-bbbbesly" aria-label="5K BBBBESLY details">
-                <div class="kit-cover free-kit product-cutout">
-                    <img src="/images/soundkits/5k-bbbbesly.webp" alt="5K BBBBESLY cover art" loading="lazy" decoding="async">
-                </div>
-                <div class="sk-meta">
-                    <p class="sk-name">5k bbbbesly</p>
-                    <p class="sk-price">free</p>
-                </div>
-            </a>
+        <!-- El JS rellena esta rejilla desde /data/kits.json (los 3 kits
+             más recientes); el server-side rendering en functions/index.js
+             hace lo mismo para que sea visible sin JS. -->
+        <div class="home-showcase-grid" id="home-showcase-grid" aria-busy="true">
+            <p class="loading-state">Loading kits…</p>
         </div>
+
+        <noscript>
+            <p class="loading-state">
+                Enable JavaScript to browse the kits, or go straight to
+                <a href="/kits">the full catalog</a>.
+            </p>
+        </noscript>
     </section>
 
     <section class="contact-container" aria-labelledby="contact-heading">
