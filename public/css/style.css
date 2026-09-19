@@ -1256,6 +1256,12 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
     color: var(--text-pure);
 }
 
+.pdp-published {
+    font-size: 0.8rem;
+    color: var(--text-gray-medium);
+    padding-block: 4px;
+}
+
 .pdp-divider {
     border: none;
     border-top: 1px solid var(--border-dark);

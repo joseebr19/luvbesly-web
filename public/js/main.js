@@ -69,6 +69,9 @@ async function initPage() {
         } else if (document.getElementById('kits-grid')) {
             const { initKitsPage } = await import('./kits.js');
             await initKitsPage();
+        } else if (document.getElementById('home-showcase-grid')) {
+            const { initHomeShowcase } = await import('./kits.js');
+            await initHomeShowcase();
         } else if (document.getElementById('vsts-grid')) {
             const { initVstsPage } = await import('./vsts.js');
             await initVstsPage();

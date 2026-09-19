@@ -85,12 +85,32 @@ function kitMetaHtml(kit) {
     return `<div class="sk-meta"><p class="sk-name">${escapeHtml(kit.title.toLowerCase())}</p><p class="sk-price">${escapeHtml(kit.price.toLowerCase())}</p></div>`;
 }
 
-export function kitsGridHtml(kits) {
+// Más reciente primero. Un kit sin "publishedAt" válido (p.ej. un
+// futuro placeholder "coming soon") siempre queda al final, sin
+// importar su posición en el JSON. Duplicado en public/js/kits.js
+// para que cliente y servidor generen exactamente el mismo orden.
+function sortKitsByDate(kits) {
+    return [...kits].sort((a, b) => {
+        const dateA = a.publishedAt ? new Date(a.publishedAt).getTime() : NaN;
+        const dateB = b.publishedAt ? new Date(b.publishedAt).getTime() : NaN;
+        const validA = !Number.isNaN(dateA);
+        const validB = !Number.isNaN(dateB);
+        if (!validA && !validB) return 0;
+        if (!validA) return 1;
+        if (!validB) return -1;
+        return dateB - dateA;
+    });
+}
+
+export function kitsGridHtml(kits, { limit } = {}) {
     if (!Array.isArray(kits) || kits.length === 0) {
         return '<p class="loading-state">No kits published yet.</p>';
     }
 
-    return kits.map((kit) => {
+    const sorted = sortKitsByDate(kits);
+    const visible = limit ? sorted.slice(0, limit) : sorted;
+
+    return visible.map((kit) => {
         const inner = `${kitCoverHtml(kit)}${kitMetaHtml(kit)}`;
         if (!kit.detailUrl || kit.detailUrl === '#') {
             return `<div class="sk-card">${inner}</div>`;
@@ -100,7 +120,7 @@ export function kitsGridHtml(kits) {
 }
 
 export function kitsJsonLd(kits, pageUrl) {
-    const sellable = Array.isArray(kits) ? kits.filter((kit) => !kit.isLocked) : [];
+    const sellable = Array.isArray(kits) ? sortKitsByDate(kits.filter((kit) => !kit.isLocked)) : [];
     if (sellable.length === 0) return null;
 
     return {

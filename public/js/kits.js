@@ -5,7 +5,33 @@
 import { el, clear, setState, loadJSON } from './dom.js';
 
 export async function initKitsPage() {
-    const grid = document.getElementById('kits-grid');
+    return renderKitsInto('kits-grid');
+}
+
+// Preview del home: solo los 3 kits más recientes, con enlace
+// "View all kits" al catálogo completo.
+export async function initHomeShowcase() {
+    return renderKitsInto('home-showcase-grid', { limit: 3 });
+}
+
+// Más reciente primero. Un kit sin "publishedAt" válido (p.ej. un
+// futuro placeholder "coming soon") siempre queda al final, sin
+// importar su posición en el JSON.
+function sortKitsByDate(kits) {
+    return [...kits].sort((a, b) => {
+        const dateA = a.publishedAt ? new Date(a.publishedAt).getTime() : NaN;
+        const dateB = b.publishedAt ? new Date(b.publishedAt).getTime() : NaN;
+        const validA = !Number.isNaN(dateA);
+        const validB = !Number.isNaN(dateB);
+        if (!validA && !validB) return 0;
+        if (!validA) return 1;
+        if (!validB) return -1;
+        return dateB - dateA;
+    });
+}
+
+async function renderKitsInto(gridId, { limit } = {}) {
+    const grid = document.getElementById(gridId);
     if (!grid) return;
 
     let kits;
@@ -22,8 +48,11 @@ export async function initKitsPage() {
         return;
     }
 
+    const sorted = sortKitsByDate(kits);
+    const visible = limit ? sorted.slice(0, limit) : sorted;
+
     clear(grid);
-    kits.forEach((kit) => grid.append(buildCard(kit)));
+    visible.forEach((kit) => grid.append(buildCard(kit)));
     grid.setAttribute('aria-busy', 'false');
 }
 
