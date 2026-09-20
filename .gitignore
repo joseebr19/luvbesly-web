@@ -24,3 +24,6 @@ npm-debug.log*
 
 # Estado local de la herramienta de diseño (cache, notas de sesión)
 .impeccable/
+
+# Configuración local de Claude Code (skills, agentes, hooks): no va al repo
+.claude/

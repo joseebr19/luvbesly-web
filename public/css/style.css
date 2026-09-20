@@ -27,7 +27,6 @@
     /* Fondos */
     --bg-main: #050505;
     --bg-dark: #000000;
-    --bg-card-dark: #0d0d0d;
     --bg-elevated: #0a0a0a;
 
     /* Bordes */
@@ -56,7 +55,6 @@
 
     /* Radios */
     --radius-none: 0;
-    --radius-sm: 4px;
     --radius-md: 6px;
 
     /* Tipografías */
@@ -1009,33 +1007,6 @@ footer .legal-link a:hover { color: var(--text-gray-light); text-decoration: und
 .premium-kit {
     background: linear-gradient(135deg, #10243a 0%, #060d15 100%);
 }
-
-.kit-btn {
-    color: var(--text-pure);
-    padding: 10px 4px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-color: transparent;
-    text-align: center;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    cursor: pointer;
-    transition: text-decoration-color var(--t-base);
-}
-
-.kit-btn:hover:not([disabled]) {
-    text-decoration-color: var(--text-pure);
-}
-
-.kit-btn[disabled] {
-    opacity: 0.55;
-    cursor: not-allowed;
-}
-
 
 /* ---- Buscador y aviso del VST Vault ---- */
 .vst-disclaimer {
