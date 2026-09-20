@@ -101,8 +101,8 @@ function buildMeta(kit) {
     return el('div', {
         className: 'sk-meta',
         children: [
-            el('p', { className: 'sk-name', text: kit.title.toLowerCase() }),
-            el('p', { className: 'sk-price', text: kit.price.toLowerCase() }),
+            el('p', { className: 'sk-name', text: String(kit.title ?? '').toLowerCase() }),
+            el('p', { className: 'sk-price', text: String(kit.price ?? '').toLowerCase() }),
         ],
     });
 }

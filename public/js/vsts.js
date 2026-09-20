@@ -62,7 +62,7 @@ export async function initVstsPage() {
     // 65 títulos en cada pulsación de tecla
     const index = vsts.map((vst) => ({
         vst,
-        haystack: `${vst.title} ${vst.description} ${vst.system}`.toLowerCase(),
+        haystack: `${vst.title ?? ''} ${vst.description ?? ''} ${vst.system ?? ''}`.toLowerCase(),
     }));
 
     render('');
@@ -152,10 +152,10 @@ function buildCard(vst) {
                         children: [
                             el('span', { className: 'visually-hidden', text: 'Download ' }),
                             downloadIcon(),
-                            el('span', { text: vst.title.toLowerCase() }),
+                            el('span', { text: String(vst.title ?? '').toLowerCase() }),
                         ],
                     }),
-                    el('p', { className: 'sk-price', text: vst.system.toLowerCase() }),
+                    el('p', { className: 'sk-price', text: String(vst.system ?? '').toLowerCase() }),
                 ],
             }),
         ],

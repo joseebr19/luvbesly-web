@@ -27,6 +27,8 @@ export function createPlayer(tracks, { onTrackChange } = {}) {
     audio.volume = ui.volume ? Number(ui.volume.value) : 0.8;
 
     let index = -1;
+    // Tras un error de carga, el siguiente play debe recargar la pista
+    let failed = false;
 
     // ------------------------------------------
     // ESTADO
@@ -55,6 +57,7 @@ export function createPlayer(tracks, { onTrackChange } = {}) {
         const track = tracks[index];
 
         audio.pause();
+        failed = false;
         audio.src = track.audioUrl;
 
         root.classList.remove('hidden');
@@ -75,6 +78,7 @@ export function createPlayer(tracks, { onTrackChange } = {}) {
         audio.play().catch((error) => {
             if (error.name === 'AbortError') return; // cambio de pista, normal
             console.warn('Playback failed:', error);
+            failed = true;
             notify('error');
         });
     }
@@ -82,6 +86,12 @@ export function createPlayer(tracks, { onTrackChange } = {}) {
     function toggle() {
         if (index === -1) {
             select(0);
+        } else if (failed) {
+            // Tras un error de carga audio.paused sigue en false, así que
+            // hay que comprobar el fallo antes: si no, este clic pausaría
+            failed = false;
+            audio.load();
+            play();
         } else if (audio.paused) {
             play();
         } else {
@@ -102,6 +112,7 @@ export function createPlayer(tracks, { onTrackChange } = {}) {
 
     audio.addEventListener('error', () => {
         console.warn('Audio file unavailable:', tracks[index]?.audioUrl);
+        failed = true;
         if (ui.title) ui.title.textContent = 'TRACK UNAVAILABLE';
         notify('error');
     });

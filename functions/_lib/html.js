@@ -84,7 +84,7 @@ function kitCoverHtml(kit) {
 // Tarjeta minimal: imagen flotante + nombre + precio en texto plano,
 // sin badge, sin descripción, sin botón — igual que public/js/kits.js.
 function kitMetaHtml(kit) {
-    return `<div class="sk-meta"><p class="sk-name">${escapeHtml(kit.title.toLowerCase())}</p><p class="sk-price">${escapeHtml(kit.price.toLowerCase())}</p></div>`;
+    return `<div class="sk-meta"><p class="sk-name">${escapeHtml(String(kit.title ?? '').toLowerCase())}</p><p class="sk-price">${escapeHtml(String(kit.price ?? '').toLowerCase())}</p></div>`;
 }
 
 // Más reciente primero. Un kit sin "publishedAt" válido (p.ej. un
@@ -172,8 +172,8 @@ export function vstsGridHtml(vsts) {
                 <!-- El fallback de imagen rota se aplica por JS (dom.js), no inline: la CSP del sitio bloquea onerror inline. -->
             </div>
             <div class="sk-meta">
-                <p class="sk-name"><span class="visually-hidden">Download </span>${DOWNLOAD_ICON_SVG}<span>${escapeHtml(vst.title.toLowerCase())}</span></p>
-                <p class="sk-price">${escapeHtml(vst.system.toLowerCase())}</p>
+                <p class="sk-name"><span class="visually-hidden">Download </span>${DOWNLOAD_ICON_SVG}<span>${escapeHtml(String(vst.title ?? '').toLowerCase())}</span></p>
+                <p class="sk-price">${escapeHtml(String(vst.system ?? '').toLowerCase())}</p>
             </div>
         </a>
     `.trim()).join('\n');

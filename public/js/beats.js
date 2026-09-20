@@ -82,9 +82,9 @@ export async function initBeatsPage() {
             );
             row.classList.toggle('is-playing', isActive && state !== 'error');
 
+            // El botón sigue activo: pulsarlo de nuevo reintenta la carga
             if (isActive && state === 'error') {
-                playBtn.disabled = true;
-                playBtn.setAttribute('aria-label', `${beats[index].title} unavailable`);
+                playBtn.setAttribute('aria-label', `${beats[index].title} unavailable, press to retry`);
             }
         });
     }
