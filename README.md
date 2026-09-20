@@ -1,8 +1,9 @@
 # luvbesly.com
 
 Official website and beat-selling platform for **luvbesly**. A static site with
-no framework and no build step, plus a single server function for the YouTube
-feed. Deployed on Cloudflare Pages.
+no framework and no build step, plus a handful of Cloudflare Pages Functions:
+a cached proxy for the YouTube feed and server-side rendering of the catalog
+pages for SEO. Deployed on Cloudflare Pages.
 
 🔗 [luvbesly.com](https://luvbesly.com)
 
@@ -30,11 +31,12 @@ used for local dev and deployment.
 │   │   ├── main.js         Router: nav and lazy module loading
 │   │   ├── dom.js          DOM-creation and fetch helpers
 │   │   ├── player.js       Global audio player
+│   │   ├── icons.js        Inline SVG icons for the player controls
 │   │   ├── beats.js        Beats page
 │   │   ├── kits.js         Sound kits page
 │   │   ├── vsts.js         VST Vault with search
 │   │   └── videos.js       YouTube feed (client)
-│   ├── data/               Editable content, no code changes needed
+│   ├── data/               Catalog content (see "Editing content" below)
 │   │   ├── beats.json
 │   │   ├── kits.json
 │   │   └── vsts.json
@@ -42,9 +44,11 @@ used for local dev and deployment.
 │   └── audio/
 ├── functions/
 │   ├── api/videos.js       Cached proxy to the YouTube API
+│   ├── index.js            Server-renders the latest-kits preview on the home page (/)
 │   ├── beats.js            Server-renders the beat list at /beats
 │   ├── kits.js             Server-renders the kits grid at /kits
 │   ├── vsts.js             Server-renders the VST grid at /vsts
+│   ├── videos.js           Server-renders the YouTube feed at /videos
 │   └── _lib/
 │       ├── html.js         Render/escape helpers for the above
 │       └── assets.js       Fetches a static asset, following redirects
@@ -114,8 +118,8 @@ npx wrangler pages deploy
 
 ## Editing content
 
-Content lives in `public/data/`, not in the code. To publish a new beat, add
-an entry to `beats.json` and upload the MP3 to `public/audio/`:
+Catalog content lives in `public/data/`, not in the code. To publish a new
+beat, add an entry to `beats.json` and upload the MP3 to `public/audio/`:
 
 ```json
 {
@@ -128,7 +132,18 @@ an entry to `beats.json` and upload the MP3 to `public/audio/`:
 }
 ```
 
-Same process for `kits.json` and `vsts.json`.
+**Plugins** (`vsts.json`) work the same way: add an entry and put its
+screenshot in `public/images/`. No other step.
+
+**Sound kits** (`kits.json`) need a few more steps, because each kit has a
+hand-written detail page:
+
+1. Add the entry to `kits.json` (`detailUrl` is the extensionless route, e.g.
+   `/kit-name`) and put the cover in `public/images/soundkits/`.
+2. Create `public/kit-name.html` by copying an existing kit page and editing
+   its title, description, price, BeatStars link, content list and JSON-LD.
+3. Add the new URL to `public/sitemap.xml`.
+4. Optionally add it to the "You may also like" block of the other kit pages.
 
 > **Important:** Cloudflare is case-sensitive for filenames; Windows isn't. A
 > `Beat.mp3` referenced as `beat.mp3` works locally and fails in production.
@@ -138,15 +153,18 @@ Same process for `kits.json` and `vsts.json`.
 
 ## SEO / server-side rendering
 
-`beats.html`, `kits.html` and `vsts.html` are static files whose lists used
-to be empty until client JS fetched `data/*.json` and built the DOM. That
-left crawlers and link-preview bots (which mostly don't run JS) seeing
-"Loading…" instead of the actual catalog.
+`index.html`, `beats.html`, `kits.html`, `vsts.html` and `videos.html` are
+static files whose lists used to be empty until client JS fetched
+`data/*.json` (or `/api/videos`) and built the DOM. That left crawlers and
+link-preview bots (which mostly don't run JS) seeing "Loading…" instead of
+the actual catalog.
 
-`functions/beats.js`, `kits.js` and `vsts.js` intercept those routes, fetch
-the original HTML and JSON straight from `ASSETS`, and use `HTMLRewriter`
+`functions/index.js`, `beats.js`, `kits.js`, `vsts.js` and `videos.js`
+intercept those routes, fetch the original HTML and JSON straight from
+`ASSETS` (`videos.js` calls `/api/videos` instead), and use `HTMLRewriter`
 to inject the same markup the client would build, plus JSON-LD
-(`MusicRecording` for beats, `Product`/`Offer` for purchasable kits). The
+(`MusicRecording` for beats, `Product`/`Offer` for purchasable kits,
+`VideoObject` for videos; the home only gets the kit preview). The
 client JS is untouched: on load it still clears the container and rebuilds
 it with working listeners (play/pause, search), so the server-rendered
 markup is only what a non-JS visitor or a crawler sees before that happens.
@@ -174,7 +192,9 @@ what's visible in the initial HTML response, not the buy links.
 - The function uses `playlistItems` (1 quota unit) instead of `search` (100),
   with a one-hour edge cache. Approximate usage: ~24 units/day against a
   10,000 daily quota.
-- All DOM is built with `textContent`; no data is interpolated into HTML.
+- In the browser, all DOM is built with `textContent`. The server-side
+  renderers (`functions/_lib/html.js`) do build HTML strings, so every value
+  goes through `escapeHtml` / `escapeAttr` first.
 - Strict CSP in `_headers`, no `unsafe-inline` or `unsafe-eval`. If an inline
   style or script is ever needed, its hash should be declared rather than
   loosening the policy.
